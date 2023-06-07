@@ -10,5 +10,5 @@ git init .
 tox -e deps
 tox -e docs
 pip install -e .
-git remote add origin git@github.com:scipp/copier_template.git
+git remote add origin git@github.com:scipp/myproject.git
 ```
