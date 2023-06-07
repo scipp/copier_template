@@ -28,6 +28,7 @@ jobs:
         with:
           name: conda-package-noarch
           path: conda/package/*/{{projectname}}*.tar.bz2
+{% raw %}
 
   build_wheels:
     name: Wheels
@@ -119,3 +120,4 @@ jobs:
       publish: true
       version: ${{ needs.manage-versions.outputs.version-replaced }}
     secrets: inherit
+{% endraw %}
