@@ -1,3 +1,4 @@
+{% raw %}
 name: CI
 
 on:
@@ -49,3 +50,4 @@ jobs:
       publish: false
       version: ${{ github.ref_name }}
       branch: ${{ github.head_ref == '' && github.ref_name || github.head_ref }}
+{% endraw %}
