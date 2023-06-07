@@ -1,4 +1,7 @@
 projectname:
   type: str
   help: What is your project name?
+description:
+  type: str
+  help: Brief description?
 year: 2023

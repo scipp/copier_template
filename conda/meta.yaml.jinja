@@ -1,0 +1,36 @@
+package:
+  name: {{projectname}}
+  version: {{ GIT_DESCRIBE_TAG }}
+source:
+  path: ..
+
+requirements:
+  build:
+    - setuptools
+    - setuptools_scm
+  run:
+    - python>=3.8
+
+test:
+  imports:
+    - {{projectname}}
+  requires:
+    - pytest
+  source_files:
+    - pyproject.toml
+    - tests/
+  commands:
+    - python -m pytest tests
+
+build:
+  noarch: python
+  script:
+    - pip install .
+
+about:
+  home: https://github.com/scipp/{{projectname}}
+  license: BSD-3-Clause
+  summary: {{description}}
+  description: {{description}}
+  dev_url: https://github.com/scipp/{{projectname}}
+  doc_url: https://scipp.github.io/{{projectname}}
