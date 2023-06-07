@@ -12,9 +12,7 @@ project_urls =
 classifiers =
     Programming Language :: Python :: 3
     Programming Language :: Python :: 3 :: Only
-    Programming Language :: Python :: 3.8
-    Programming Language :: Python :: 3.9
-    Programming Language :: Python :: 3.10
+    Programming Language :: Python :: {{min_python}}
     License :: OSI Approved :: BSD License
     Operating System :: OS Independent
 
@@ -23,7 +21,7 @@ package_dir =
     = src
 packages = find:
 install_requires =
-python_requires = >=3.8
+python_requires = >={{min_python}}
 include_package_data = True
 
 [options.packages.find]

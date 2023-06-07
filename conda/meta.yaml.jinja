@@ -1,6 +1,8 @@
 package:
   name: {{projectname}}
+{% raw %}
   version: {{ GIT_DESCRIBE_TAG }}
+{% endraw %}
 source:
   path: ..
 
@@ -9,7 +11,7 @@ requirements:
     - setuptools
     - setuptools_scm
   run:
-    - python>=3.8
+    - python>={{min_python}}
 
 test:
   imports:

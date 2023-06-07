@@ -22,13 +22,12 @@ jobs:
 
       - uses: conda-incubator/setup-miniconda@v2
       - run: conda install --yes conda-build
-      - run: conda build --channel conda-forge --channel scipp --python=3.8 --no-anaconda-upload --override-channels --output-folder conda/package conda
+      - run: conda build --channel conda-forge --channel scipp --python={{min_python}} --no-anaconda-upload --override-channels --output-folder conda/package conda
 
       - uses: actions/upload-artifact@v2
         with:
           name: conda-package-noarch
           path: conda/package/*/{{projectname}}*.tar.bz2
-{% raw %}
 
   build_wheels:
     name: Wheels
@@ -41,7 +40,8 @@ jobs:
 
       - uses: actions/setup-python@v3
         with:
-          python-version: '3.8'
+          python-version: '{{min_python}}'
+{% raw %}
 
       - run: python -m pip install --upgrade pip
       - run: python -m pip install -r requirements/wheels.txt
@@ -79,7 +79,9 @@ jobs:
       - uses: actions/download-artifact@v3
       - uses: conda-incubator/setup-miniconda@v2
         with:
-          python-version: '3.10'
+{% endraw %}
+          python-version: '{{min_python}}'
+{% raw %}
       - run: conda install -c conda-forge --yes anaconda-client
       - run: anaconda --token ${{ secrets.ANACONDATOKEN }} upload --user scipp --label main $(ls conda-package-*/*/*.tar.bz2)
 
@@ -95,7 +97,9 @@ jobs:
           fetch-depth: 0  # history required so cmake can determine version
       - uses: actions/setup-python@v3
         with:
-          python-version: '3.8'
+{% endraw %}
+          python-version: '{{min_python}}'
+{% raw %}
       - run: python -m pip install --upgrade pip
       - run: python -m pip install -r requirements/ci.txt
       - name: Set outputs

@@ -4,4 +4,7 @@ projectname:
 description:
   type: str
   help: Brief description?
+min_python:
+  type: str
+  help: Minimum Python version?
 year: 2023

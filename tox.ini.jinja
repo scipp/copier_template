@@ -1,5 +1,5 @@
 [tox]
-envlist = py{38,39,310}
+envlist = py{{min_python|replace(".", "")}}
 isolated_build = true
 
 [testenv]
@@ -10,7 +10,6 @@ commands = pytest
 
 [testenv:docs]
 description = invoke sphinx-build to build the HTML docs
-basepython = python3.8
 deps =
   {posargs:}
   -r requirements/docs.txt
