@@ -7,4 +7,7 @@ description:
 min_python:
   type: str
   help: Minimum Python version?
+max_python:
+  type: str
+  help: Maximum Python version that is known to work?
 year: 2023
