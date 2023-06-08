@@ -1,7 +1,6 @@
 build
 dist
 .tox
-src/scippnexus.egg-info
 
 *.sw?
 compile_commands.json
