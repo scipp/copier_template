@@ -1,18 +1,46 @@
 [build-system]
 requires = [
-  "setuptools>=42",
-  "setuptools_scm[toml]>=6.2",
+  "setuptools>=67",
+  "setuptools_scm[toml]>=7.0",
 ]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "{{projectname}}"
+description = "{{description}}"
+authors= [{name="Scipp contributors"}]
+license = { "file" = "LICENSE" }
+readme = "README.md"
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: BSD License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+{% for version in range(int(min_python.split(".")[1]), int(max_python.split(".")[1])+1) %}
+    "Programming Language :: Python :: {{version}}",
+{% endfor %}
+    "Topic :: Scientific/Engineering",
+    "Typing :: Typed",
+]
+requires-python = ">={{min_python}}"
+dependencies = [
+]
+dynamic = ["version"]
+
+[project.urls]
+"Bug Tracker" = "https://github.com/scipp/{{projectname}}/issues"
+"Source" = "https://github.com/scipp/{{projectname}}"
 
 [tool.setuptools_scm]
 
 [tool.pytest.ini_options]
+minversion = "7.0"
 addopts = "-ra -v"
 testpaths = "tests"
 filterwarnings = [
   "error",
-  "ignore::UserWarning",
 ]
 
 [tool.bandit]
