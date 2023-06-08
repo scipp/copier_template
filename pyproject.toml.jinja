@@ -18,9 +18,9 @@ classifiers = [
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-{% for version in range(int(min_python.split(".")[1]), int(max_python.split(".")[1])+1) %}
+{%- for version in range(min_python.split(".")[1] | int, max_python.split(".")[1] | int + 1) %}
     "Programming Language :: Python :: {{version}}",
-{% endfor %}
+{%- endfor %}
     "Topic :: Scientific/Engineering",
     "Typing :: Typed",
 ]
