@@ -19,7 +19,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
 {%- for version in range(min_python.split(".")[1] | int, max_python.split(".")[1] | int + 1) %}
-    "Programming Language :: Python :: {{version}}",
+    "Programming Language :: Python :: 3.{{version}}",
 {%- endfor %}
     "Topic :: Scientific/Engineering",
     "Typing :: Typed",
