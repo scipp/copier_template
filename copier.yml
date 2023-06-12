@@ -1,7 +1,8 @@
 projectname:
   type: str
   help: What is your project name?
-orgname: scipp
+orgname:
+  default: scipp
   type: str
   help: What is your organization name?
 description:
