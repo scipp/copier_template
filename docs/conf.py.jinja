@@ -132,7 +132,7 @@ html_theme_options = {
     "icon_links": [
         {
             "name": "GitHub",
-            "url": "https://github.com/scipp/{{projectname}}",
+            "url": "https://github.com/{{orgname}}/{{projectname}}",
             "icon": "fa-brands fa-github",
             "type": "fontawesome",
         },
@@ -182,7 +182,6 @@ nbsphinx_execute_arguments = [
 
 doctest_global_setup = '''
 import numpy as np
-import scipp as sc
 '''
 
 # Using normalize whitespace because many __str__ functions in scipp produce
