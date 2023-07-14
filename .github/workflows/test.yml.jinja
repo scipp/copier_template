@@ -10,7 +10,7 @@ on:
         default: 'ubuntu-20.04'
         type: string
       python-version:
-        default: '3.9'
+        default: '{{min_python}}'
         type: string
       tox-env:
         default: 'test'
@@ -27,7 +27,7 @@ on:
         default: 'ubuntu-20.04'
         type: string
       python-version:
-        default: '3.9'
+        default: '{{min_python}}'
         type: string
       tox-env:
         default: 'test'
