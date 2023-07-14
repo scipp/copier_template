@@ -14,4 +14,6 @@ min_python:
 max_python:
   type: str
   help: Maximum Python version that is known to work?
+standard_python: '3.10'
+standard_os: 'ubuntu-20.04'
 year: 2023
