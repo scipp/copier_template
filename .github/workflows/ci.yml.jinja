@@ -11,7 +11,7 @@ on:
 jobs:
   formatting:
     name: Formatting and static analysis
-    runs-on: ubuntu-20.04
+    runs-on: '{{standard_os}}'
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v3
@@ -30,7 +30,7 @@ jobs:
     strategy:
       matrix:
 {% endraw %}
-        os: ["ubuntu-20.04"]
+        os: ['{{standard_os}}']
         python: ['{{min_python}}']
         tox-env: ['py{{min_python|replace(".", "")}}']
 {% raw %}

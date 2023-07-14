@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       os-variant:
-        default: 'ubuntu-20.04'
+        default: '{{standard_os}}'
         type: string
       python-version:
         default: '{{min_python}}'
@@ -24,7 +24,7 @@ on:
   workflow_call:
     inputs:
       os-variant:
-        default: 'ubuntu-20.04'
+        default: '{{standard_os}}'
         type: string
       python-version:
         default: '{{min_python}}'
