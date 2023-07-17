@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       os-variant:
-        default: '{{standard_os}}'
+        default: '{{github_linux_image}}'
         type: string
       python-version:
         default: '{{min_python}}'
@@ -24,7 +24,7 @@ on:
   workflow_call:
     inputs:
       os-variant:
-        default: '{{standard_os}}'
+        default: '{{github_linux_image}}'
         type: string
       python-version:
         default: '{{min_python}}'

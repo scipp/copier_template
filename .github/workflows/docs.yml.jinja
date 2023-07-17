@@ -37,7 +37,7 @@ env:
 jobs:
   docs:
     name: Build documentation
-    runs-on: '{{standard_os}}'
+    runs-on: '{{github_linux_image}}'
     steps:
       - run: sudo apt install --yes graphviz pandoc
       - uses: actions/checkout@v3

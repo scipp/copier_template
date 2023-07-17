@@ -12,7 +12,7 @@ defaults:
 jobs:
   build_conda:
     name: Conda build
-    runs-on: '{{standard_os}}'
+    runs-on: '{{github_linux_image}}'
 
     steps:
       - uses: actions/checkout@v2
@@ -31,7 +31,7 @@ jobs:
 
   build_wheels:
     name: Wheels
-    runs-on: '{{standard_os}}'
+    runs-on: '{{github_linux_image}}'
 
     steps:
       - uses: actions/checkout@v3
@@ -58,7 +58,7 @@ jobs:
   upload_pypi:
     name: Deploy PyPI
     needs: [build_wheels, build_conda]
-    runs-on: '{{standard_os}}'
+    runs-on: '{{github_linux_image}}'
     if: github.event_name == 'release' && github.event.action == 'published'
 
     steps:
@@ -72,7 +72,7 @@ jobs:
   upload_conda:
     name: Deploy Conda Forge
     needs: [build_wheels, build_conda]
-    runs-on: '{{standard_os}}'
+    runs-on: '{{github_linux_image}}'
     if: github.event_name == 'release' && github.event.action == 'published'
 
     steps:
@@ -87,7 +87,7 @@ jobs:
 
   manage-versions:
     name: Manage Versions
-    runs-on: '{{standard_os}}'
+    runs-on: '{{github_linux_image}}'
     outputs:
       version-new: ${{ steps.version.outputs.new }}
       version-replaced: ${{ steps.version.outputs.replaced }}
