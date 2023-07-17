@@ -7,7 +7,7 @@ on:
       - main
       - release
   pull_request:
-
+{% endraw %}
 jobs:
   formatting:
     name: Formatting and static analysis
@@ -23,7 +23,7 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Apply automatic formatting
-
+{% raw %}
   tests:
     name: Tests ${{ matrix.os }} py${{ matrix.python }}
     needs: formatting

@@ -33,12 +33,13 @@ on:
 
 env:
   VERSION: ${{ inputs.version }}
-
+{% endraw %}
 jobs:
   docs:
     name: Build documentation
     runs-on: '{{github_linux_image}}'
     steps:
+{% raw %}
       - run: sudo apt install --yes graphviz pandoc
       - uses: actions/checkout@v3
         with:
