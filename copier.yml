@@ -14,4 +14,7 @@ min_python:
 max_python:
   type: str
   help: Maximum Python version that is known to work?
+github_linux_image: 'ubuntu-20.04'
+  type: str
+  help: What OS image should be used for the github action?
 year: 2023
