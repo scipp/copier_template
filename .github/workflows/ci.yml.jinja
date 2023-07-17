@@ -31,13 +31,15 @@ jobs:
       matrix:
 {% endraw %}
         os: ['{{github_linux_image}}']
-        python: ['{{min_python}}']
-        tox-env: ['py{{min_python|replace(".", "")}}']
+        python:
+          - version: '{{min_python}}'
+            tox-env: 'py{{min_python|replace(".", "")}}'
 {% raw %}
     uses: ./.github/workflows/test.yml
     with:
       os-variant: ${{ matrix.os }}
-      python-version: ${{ matrix.python }}
+      python-version: ${{ matrix.python.version }}
+      tox-env: ${{ matrix.python.tox-env }}
 
   docs:
     needs: tests
