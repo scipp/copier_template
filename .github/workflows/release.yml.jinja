@@ -54,13 +54,13 @@ jobs:
         with:
           name: dist
           path: dist
-
+{% endraw %}
   upload_pypi:
     name: Deploy PyPI
     needs: [build_wheels, build_conda]
     runs-on: '{{github_linux_image}}'
     if: github.event_name == 'release' && github.event.action == 'published'
-
+{% raw %}
     steps:
       - uses: actions/download-artifact@v3
       - uses: actions/setup-python@v3
@@ -68,7 +68,7 @@ jobs:
         with:
           user: __token__
           password: ${{ secrets.PYPI_TOKEN }}
-
+{% endraw %}
   upload_conda:
     name: Deploy Conda Forge
     needs: [build_wheels, build_conda]
@@ -79,15 +79,15 @@ jobs:
       - uses: actions/download-artifact@v3
       - uses: conda-incubator/setup-miniconda@v2
         with:
-{% endraw %}
           python-version: '{{min_python}}'
 {% raw %}
       - run: conda install -c conda-forge --yes anaconda-client
       - run: anaconda --token ${{ secrets.ANACONDATOKEN }} upload --user scipp --label main $(ls conda-package-*/*/*.tar.bz2)
-
   manage-versions:
     name: Manage Versions
+{% endraw %}
     runs-on: '{{github_linux_image}}'
+{% raw %}
     outputs:
       version-new: ${{ steps.version.outputs.new }}
       version-replaced: ${{ steps.version.outputs.replaced }}

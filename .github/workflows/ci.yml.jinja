@@ -7,7 +7,7 @@ on:
       - main
       - release
   pull_request:
-
+{% endraw %}
 jobs:
   formatting:
     name: Formatting and static analysis
@@ -23,7 +23,7 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Apply automatic formatting
-
+{% raw %}
   tests:
     name: Tests ${{ matrix.os }} py${{ matrix.python }}
     needs: formatting
@@ -31,14 +31,15 @@ jobs:
       matrix:
 {% endraw %}
         os: ['{{github_linux_image}}']
-        python: ['{{min_python}}']
-        tox-env: ['py{{min_python|replace(".", "")}}']
+        python:
+          - version: '{{min_python}}'
+            tox-env: 'py{{min_python|replace(".", "")}}'
 {% raw %}
     uses: ./.github/workflows/test.yml
     with:
       os-variant: ${{ matrix.os }}
-      python-version: ${{ matrix.python }}
-      tox-env: ${{ matrix.tox-env }}
+      python-version: ${{ matrix.python.version }}
+      tox-env: ${{ matrix.python.tox-env }}
 
   docs:
     needs: tests
