@@ -16,7 +16,7 @@ git remote add origin git@github.com:scipp/myproject.git
 ## Manual Configuration
 Once the project is built from the template, there are manual settings to be configured per project/repository for deployment of documentation and packages.
 
-### Document
+### Document Deployment
 1. Select branch of deployed document.
   The document will be deployed from a branch via github action.
   The branch of the document should be selected manually on github.
