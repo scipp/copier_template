@@ -17,9 +17,9 @@ git remote add origin git@github.com:scipp/myproject.git
 Once the project is built from the template, there are manual settings to be configured per project/repository for deployment of documentation and packages.
 
 ### Documentation Deployment
-1. Select branch of deployed document.
-  The document will be deployed from a branch via github action.
-  The branch of the document should be selected manually on github.
+1. Select branch of deployed documentation.
+  The documentation will be deployed from a branch via GitHub action.
+  The branch of the documentation must be selected manually on GitHub.
   Go to `Settings > Pages` and set `source` as  `Deploy from a branch` and `Branch` as `gh-pages`.
 
 2. Add `.nojekyll` file.
