@@ -23,7 +23,7 @@ Once the project is built from the template, there are manual settings to be con
   Go to `Settings > Pages` and set `source` as  `Deploy from a branch` and `Branch` as `gh-pages`.
 
 2. Add `.nojekyll` file.
-  Once the document is deployed to a branch, make sure it has `.nojekyll` file in the `gh-pages` branch and you should be able to see the documentation at `scipp.github.io/project_name`.
+  Once the documentation is deployed to a branch, make sure it has `.nojekyll` file in the `gh-pages` branch and you should be able to see the documentation at `scipp.github.io/project_name`.
 
 3. Deployment key.
   The deployment key should be already set by organization if it is under `scipp` organization.
