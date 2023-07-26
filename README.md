@@ -14,7 +14,7 @@ git remote add origin git@github.com:scipp/myproject.git
 ```
 
 ## Manual Configuration
-Once the project is built from the template, there are manual settings to be configured per project/repository for deployment of documentation and packages.
+Once the project is built from the template, there are manual settings to be configured per project/repository.
 
 ### Documentation Deployment
 1. Select branch of deployed documentation.
@@ -55,3 +55,12 @@ If it is the first time of deployment, there are 2 ways to upload the package.
   It is because you can not select a project that does not exist in `pypi` yet.
 
 After the first deployment, a new token that has access to the project can be created in (`pypi.org`)[https://pypi.org/] and configured in the repository.
+
+### Branch Projection Rules
+Go to `Settings > Branches` and in the `Branch protection rules` add rule for `main` branch to project it.
+Under `Protect matching branches` setting, select
+- [ ] `Require a pull request before merging`
+- [ ] `Require approvals`
+- [ ] `Require status checks to pass before merging`
+       You can either use all checks for `PR`, or select `required` checks under `Require status checks to pass before merging` settings.
+- [ ] `Require branches to be up to date before merging`
