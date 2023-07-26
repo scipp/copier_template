@@ -63,5 +63,5 @@ Under `Protect matching branches` setting, select
 - [ ] `Require approvals`
 - [ ] `Require status checks to pass before merging`
 
-      You can either use all checks for `PR`, or select `required` checks only.
+      You can either use all checks, or select `required` checks only.
 - [ ] `Require branches to be up to date before merging`
