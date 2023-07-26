@@ -56,7 +56,7 @@ If it is the first time of deployment, there are 2 ways to upload the package.
 
 After the first deployment, a new token that has access to the project can be created in (`pypi.org`)[https://pypi.org/] and configured in the repository.
 
-### Branch Projection Rules
+### Branch Protection Rules
 Go to `Settings > Branches` and in the `Branch protection rules` add rule for `main` branch to project it.
 Under `Protect matching branches` setting, select
 - [ ] `Require a pull request before merging`
