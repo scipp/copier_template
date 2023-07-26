@@ -16,7 +16,7 @@ git remote add origin git@github.com:scipp/myproject.git
 ## Manual Configuration
 Once the project is built from the template, there are manual settings to be configured per project/repository for deployment of documentation and packages.
 
-## Document
+### Document
 1. Select branch of deployed document.
   The document will be deployed from a branch via github action.
   The branch of the document should be selected manually on github.
@@ -27,3 +27,16 @@ Once the project is built from the template, there are manual settings to be con
 
 3. Deployment key.
   The deployment key should be already set by organization if it is under `scipp` organization.
+
+### Package Deployment
+See (releasing scipp)[https://scipp.github.io/reference/developer/releasing-scipp.html#updating-an-expired-anaconda-token] for more information about deployment.
+
+1. Conda
+Go to Settings > Secrets > Actions > Organization secrets.
+There is `scipp` organization-wide anaconda key, `ANACONDATOKEN`. But it should be enabled per repository.
+
+2. Pypi
+Go to Settings > Secrets > Actions > Repository secrets.
+`PYPI_TOKEN` should be configured per repository.
+You can make one under your account on (`pypi.org`)[https://pypi.org/].
+If it is the first time of deployment, the token needs to have all-access and after the first deployment, it can be replaced with the new token that has the access to the project.
