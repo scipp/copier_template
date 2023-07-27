@@ -64,4 +64,4 @@ Under `Protect matching branches` setting, select
 - [ ] `Require status checks to pass before merging`
 
       You can either use all checks, or select `required` checks only.
-- [ ] `Require branches to be up to date before merging`
+      The list of jobs you can select as `required` checks will be shown only after they are triggered at least once within a week.
