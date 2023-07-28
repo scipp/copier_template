@@ -61,6 +61,7 @@ Go to `Settings > Branches` and in the `Branch protection rules` add rule for `m
 Under `Protect matching branches` setting, select
 - [ ] `Require a pull request before merging`
 - [ ] `Require approvals`
+- [ ] `Require branches to be up to date before merging`
 - [ ] `Require status checks to pass before merging`
 
       You can either use all checks, or select `required` checks only.
