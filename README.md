@@ -1,3 +1,5 @@
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
+
 # Copier template for Scipp projects
 
 See [copier](https://copier.readthedocs.io/en/stable/) for details.
