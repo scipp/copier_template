@@ -36,7 +36,7 @@ Go to `repository page` > `About section`(in the right sidebar).
 Click the gear and check the "Use your GitHub Pages website" checkbox for "Website".
 
 ### Package Deployment
-See (releasing scipp)[https://scipp.github.io/reference/developer/releasing-scipp.html#updating-an-expired-anaconda-token] for more information about deployment.
+See [releasing scipp](https://scipp.github.io/reference/developer/releasing-scipp.html#updating-an-expired-anaconda-token) for more information about deployment.
 
 1. Conda
 Go to Settings > Secrets > Actions > Organization secrets.
@@ -45,18 +45,18 @@ There is `scipp` organization-wide anaconda key, `ANACONDATOKEN`. But it should 
 2. Pypi
 Go to Settings > Secrets > Actions > Repository secrets.
 `PYPI_TOKEN` should be configured per repository.
-You may need to create a token under your private account on (`pypi.org`)[https://pypi.org/].
+You may need to create a token under your private account on [pypi.org](https://pypi.org/).
 If it is the first time of deployment, there are 2 ways to upload the package.
 
 1. Manually build and upload the wheel.
-  See (upload the distribution archives)[https://packaging.python.org/en/latest/tutorials/packaging-projects/#uploading-the-distribution-archives] page for more details.
+  See [upload the distribution archives](https://packaging.python.org/en/latest/tutorials/packaging-projects/#uploading-the-distribution-archives) page for more details.
   You may need to use your personal username/password to upload the package.
 
 2. Create a token that has access to all-projects under your account.
   In order to create a new project, the token used for the deployment needs access to all projects under your account.
   It is because you can not select a project that does not exist in `pypi` yet.
 
-After the first deployment, a new token that has access to the project can be created in (`pypi.org`)[https://pypi.org/] and configured in the repository.
+After the first deployment, a new token that has access to the project can be created in [pypi.org](https://pypi.org/) and configured in the repository.
 
 ### Branch Protection Rules
 Go to `Settings > Branches` and in the `Branch protection rules` add rule for `main` branch to project it.
