@@ -24,10 +24,7 @@ Once the project is built from the template, there are manual settings to be con
    The branch of the documentation must be selected manually on GitHub.
    Go to `Settings > Pages` and set `source` as  `Deploy from a branch` and `Branch` as `gh-pages`.
 
-2. SSH key.
-   The ssh key for github action should be already set by organization if it is under `scipp` organization.
-
-3. Enable website link on repository page.
+2. Enable website link on repository page.
    Once the branch for the documentation is selected after step `1`, it can be shown in the repository page.
    Go to `repository page` > `About section` (in the right sidebar).
    Click the gear and check the "Use your GitHub Pages website" checkbox for "Website".
