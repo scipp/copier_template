@@ -20,20 +20,14 @@ Once the project is built from the template, there are manual settings to be con
 
 ### Documentation Deployment
 1. Select branch of deployed documentation.
-  The documentation will be deployed from a branch via GitHub action.
-  The branch of the documentation must be selected manually on GitHub.
-  Go to `Settings > Pages` and set `source` as  `Deploy from a branch` and `Branch` as `gh-pages`.
+   The documentation will be deployed from a branch via GitHub action.
+   The branch of the documentation must be selected manually on GitHub.
+   Go to `Settings > Pages` and set `source` as  `Deploy from a branch` and `Branch` as `gh-pages`.
 
-2. Add `.nojekyll` file.
-  Once the documentation is deployed to a branch, make sure it has `.nojekyll` file in the `gh-pages` branch and you should be able to see the documentation at `scipp.github.io/project_name`.
-
-3. SSH key.
-  The ssh key for github action should be already set by organization if it is under `scipp` organization.
-
-4. Enable website link on repository page.
-Once the branch for the documentation is selected after step `1`, it can be shown in the repository page.
-Go to `repository page` > `About section`(in the right sidebar).
-Click the gear and check the "Use your GitHub Pages website" checkbox for "Website".
+2. Enable website link on repository page.
+   Once the branch for the documentation is selected after step `1`, it can be shown in the repository page.
+   Go to `repository page` > `About section` (in the right sidebar).
+   Click the gear and check the "Use your GitHub Pages website" checkbox for "Website".
 
 ### Package Deployment
 See [releasing scipp](https://scipp.github.io/reference/developer/releasing-scipp.html#updating-an-expired-anaconda-token) for more information about deployment.
