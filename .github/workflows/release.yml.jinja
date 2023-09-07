@@ -59,16 +59,14 @@ jobs:
     name: Deploy PyPI
     needs: [build_wheels, build_conda]
     runs-on: '{{github_linux_image}}'
+    environment: release
+    permissions:
+      id-token: write
     if: github.event_name == 'release' && github.event.action == 'published'
-{% raw %}
     steps:
       - uses: actions/download-artifact@v3
-      - uses: actions/setup-python@v3
-      - uses: pypa/gh-action-pypi-publish@v1.8.6
-        with:
-          user: __token__
-          password: ${{ secrets.PYPI_TOKEN }}
-{% endraw %}
+      - uses: pypa/gh-action-pypi-publish@v1.8.10
+
   upload_conda:
     name: Deploy Conda Forge
     needs: [build_wheels, build_conda]
