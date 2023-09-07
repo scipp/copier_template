@@ -42,7 +42,9 @@ There is `scipp` organization-wide anaconda key, `ANACONDATOKEN`. But it should 
 
 #### PyPI
 
-Create a new project by [adding a trusted publisher](https://docs.pypi.org/trusted-publishers/creating-a-project-through-oidc/).
+1. Create a new project by [adding a trusted publisher](https://docs.pypi.org/trusted-publishers/creating-a-project-through-oidc/).
+2. In the GitHub project settings, go to `Environments` and add a new environment `release`.
+   Configure appropriate protection rules such as required reviewers and deploying only from protected branches.
 
 ### Branch Protection Rules
 Go to `Settings > Branches` and in the `Branch protection rules` add rule for `main` branch to project it.
