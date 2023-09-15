@@ -61,6 +61,7 @@ intersphinx_mapping = {
     'ess': ('https://scipp.github.io/ess', None),
     'sciline': ('https://scipp.github.io/sciline', None),
 }
+intersphinx_mapping.pop('{{projectname}}', None)
 
 # autodocs includes everything, even irrelevant API internals. autosummary
 # looks more suitable in the long run when the API grows.
