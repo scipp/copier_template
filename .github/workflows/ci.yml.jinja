@@ -35,13 +35,13 @@ jobs:
         python:
           - version: '{{min_python}}'
             tox-env: 'py{{min_python|replace(".", "")}}'
-{% raw %}
+{% raw -%}
     uses: ./.github/workflows/test.yml
     with:
       os-variant: ${{ matrix.os }}
       python-version: ${{ matrix.python.version }}
       tox-env: ${{ matrix.python.tox-env }}
-{% endraw %}
+{%- endraw %}
 
   docs:
     needs: tests

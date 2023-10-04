@@ -38,7 +38,8 @@ on:
       coverage-report:
         default: false
         type: boolean
-{% raw %}
+{% raw -%}
+
 jobs:
   test:
     runs-on: ${{ inputs.os-variant }}
@@ -56,4 +57,4 @@ jobs:
         with:
           name: CoverageReport
           path: coverage_html/
-{% endraw %}
+{%- endraw %}

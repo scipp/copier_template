@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: BSD-3-Clause
 # Copyright (c) 2023 Scipp contributors (https://github.com/scipp)
 
-{% raw %}
+{% raw -%}
 name: Docs
 
 on:
@@ -36,13 +36,14 @@ on:
 
 env:
   VERSION: ${{ inputs.version }}
-{% endraw %}
+{%- endraw %}
+
 jobs:
   docs:
     name: Build documentation
     runs-on: '{{github_linux_image}}'
     steps:
-{% raw %}
+{% raw -%}
       - run: sudo apt install --yes graphviz pandoc
       - uses: actions/checkout@v3
         with:
@@ -50,13 +51,13 @@ jobs:
           fetch-depth: 0  # history required so cmake can determine version
       - uses: actions/setup-python@v3
         with:
-{% endraw %}
+{%- endraw %}
           python-version: '{{min_python}}'
       - run: python -m pip install --upgrade pip
       - run: python -m pip install -r requirements/ci.txt
       - run: |
           tox --skip-pkg-install -e docs -- {{projectname}}==${VERSION}
-{% raw %}
+{% raw -%}
         if: ${{ inputs.version != '' }}
       - run: tox -e docs
         if: ${{ inputs.version == '' }}
@@ -72,4 +73,4 @@ jobs:
           folder: docs_html
           single-commit: true
           ssh-key: ${{ secrets.GH_PAGES_DEPLOY_KEY }}
-{% endraw %}
+{%- endraw %}
