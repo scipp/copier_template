@@ -41,10 +41,11 @@ jobs:
       os-variant: ${{ matrix.os }}
       python-version: ${{ matrix.python.version }}
       tox-env: ${{ matrix.python.tox-env }}
-{% endraw %}
 
   docs:
     needs: tests
     uses: ./.github/workflows/docs.yml
     with:
       publish: false
+      branch: ${{ github.head_ref == '' && github.ref_name || github.head_ref }}
+{% endraw %}
