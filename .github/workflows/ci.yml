@@ -14,6 +14,8 @@ jobs:
   formatting:
     name: Formatting and static analysis
     runs-on: 'ubuntu-20.04'
+    outputs:
+      min_python: ${{ steps.vars.outputs.min_python }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
@@ -25,6 +27,9 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Apply automatic formatting
+      - name: Get Python version for other CI jobs
+        id: vars
+        run: echo "min_python=$(cat .min-python-version)" >> $GITHUB_OUTPUT
 
   tests:
     name: Tests
@@ -33,9 +38,8 @@ jobs:
       matrix:
         os: ['ubuntu-20.04']
         python:
-          - version: '{{min_python}}'
-            tox-env: 'py{{min_python|replace(".", "")}}'
-{% raw %}
+          - version: '${{needs.formatting.outputs.min_python}}'
+            tox-env: 'py${{ replace(needs.formatting.outputs.min_python, ".", "") }}'
     uses: ./.github/workflows/test.yml
     with:
       os-variant: ${{ matrix.os }}
@@ -48,4 +52,3 @@ jobs:
     with:
       publish: false
       branch: ${{ github.head_ref == '' && github.ref_name || github.head_ref }}
-{% endraw %}
