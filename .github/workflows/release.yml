@@ -47,7 +47,7 @@ jobs:
 
       - uses: actions/setup-python@v4
         with:
-          python-version-file: '.min-python-version'
+          python-version-file: '.github/workflows/python-version-ci'
 
       - run: python -m pip install --upgrade pip
       - run: python -m pip install -r requirements/wheels.txt
