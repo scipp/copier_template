@@ -11,7 +11,7 @@ cd myproject
 git init .
 tox -e deps
 git add * .copier-answers.yml .github .gitignore .pre-commit-config.yaml
-git commit -m Setup from copier_template
+git commit -m "Setup from copier_template"
 tox -e docs
 pip install -e .
 git remote add origin git@github.com:scipp/myproject.git
