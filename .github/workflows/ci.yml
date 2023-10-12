@@ -16,6 +16,7 @@ jobs:
     runs-on: 'ubuntu-20.04'
     outputs:
       min_python: ${{ steps.vars.outputs.min_python }}
+      min_tox_env: ${{ steps.vars.outputs.min_tox_env }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
@@ -29,7 +30,9 @@ jobs:
           commit_message: Apply automatic formatting
       - name: Get Python version for other CI jobs
         id: vars
-        run: echo "min_python=$(cat .min-python-version)" >> $GITHUB_OUTPUT
+        run: |
+          echo "min_python=$(cat .min-python-version)" >> $GITHUB_OUTPUT
+          echo "min_tox_env=py$(cat .min-python-version | sed 's/\.//g')" >> $GITHUB_OUTPUT
 
   tests:
     name: Tests
@@ -39,7 +42,7 @@ jobs:
         os: ['ubuntu-20.04']
         python:
           - version: '${{needs.formatting.outputs.min_python}}'
-            tox-env: 'py${{ replace(needs.formatting.outputs.min_python, ".", "") }}'
+            tox-env: '${{needs.formatting.outputs.min_tox_env}}'
     uses: ./.github/workflows/test.yml
     with:
       os-variant: ${{ matrix.os }}
