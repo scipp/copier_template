@@ -8,6 +8,20 @@ setenv =
   JUPYTER_PLATFORM_DIRS = 1
 commands = pytest
 
+[testenv:nightly]
+deps =
+  # Add your dependencies here, should be same as in pyproject.toml, but use
+  # versions from GitHub 'main' branch for upstream Scipp dependencies.
+  # Example:
+  #   sciline @ git+https://github.com/scipp/sciline@main
+  -r requirements/test.txt
+  -r requirements/docs.txt
+setenv =
+  JUPYTER_PLATFORM_DIRS = 1
+commands = pytest
+           python -m sphinx -j2 -v -b html -d {toxworkdir}/docs_doctrees docs html
+           python -m sphinx -j2 -v -b doctest -d {toxworkdir}/docs_doctrees docs html
+
 [testenv:docs]
 description = invoke sphinx-build to build the HTML docs
 deps = -r requirements/docs.txt
