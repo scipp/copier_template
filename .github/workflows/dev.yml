@@ -22,7 +22,7 @@ jobs:
         run: echo "min_tox_env=py$(cat .github/workflows/python-version-ci | sed 's/\.//g')" >> $GITHUB_OUTPUT
       - uses: mamba-org/setup-micromamba@v1
         with:
-          environment-file: .github/workflows/dev-env.yml
+          environment-file: dev-env.yml
           condarc: |
             channel_priority: strict
       - run: tox --skip-pkg-install -e ${{ steps.vars.outputs.min_tox_env }}
