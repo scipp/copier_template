@@ -1,0 +1,29 @@
+# SPDX-License-Identifier: BSD-3-Clause
+# Copyright (c) 2023 Scipp contributors (https://github.com/scipp)
+
+name: Dev CI
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/dev.yml'
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  test:
+    name: Test
+    runs-on: 'ubuntu-20.04'
+    steps:
+      - uses: actions/checkout@v3
+      - name: Get Python version for other CI jobs
+        id: vars
+        run: echo "min_tox_env=py$(cat .github/workflows/python-version-ci | sed 's/\.//g')" >> $GITHUB_OUTPUT
+      - uses: mamba-org/setup-micromamba@v1
+        with:
+          environment-file: .github/workflows/dev-env.yml
+          condarc: |
+            channel_priority: strict
+      - run: tox --skip-pkg-install -e ${{ steps.vars.outputs.min_tox_env }}
+      - run: tox --skip-pkg-install -e docs

@@ -1,0 +1,36 @@
+# SPDX-License-Identifier: BSD-3-Clause
+# Copyright (c) 2023 Scipp contributors (https://github.com/scipp)
+
+name: Dev release
+
+on:
+  push:
+    branches:
+      - main
+
+defaults:
+  run:
+    shell: bash -l {0}  # required for conda env
+
+jobs:
+  build_conda:
+    name: Conda build
+    runs-on: 'ubuntu-20.04'
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+          fetch-depth: 0  # history required so cmake can determine version
+
+      - uses: mamba-org/setup-micromamba@v1
+        with:
+          environment-name: build-env
+          create-args: >-
+            anaconda-client
+            conda-build
+            boa
+      # Build using default (main) label for all dependencies
+      - run: conda mambabuild --channel conda-forge --channel scipp --no-anaconda-upload --override-channels --output-folder conda/package conda
+      # Publish to dev label
+      - run: anaconda --token ${{ secrets.ANACONDATOKEN }} upload --user scipp --label dev $(ls conda/package/noarch/*tar.bz2)

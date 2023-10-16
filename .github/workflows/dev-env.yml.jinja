@@ -1,0 +1,12 @@
+# SPDX-License-Identifier: BSD-3-Clause
+# Copyright (c) 2022 Scipp contributors (https://github.com/scipp)
+
+name: dev-env
+channels:
+    - scipp/label/dev
+    - scipp
+    - conda-forge
+dependencies:
+    - python=={{min_python}}
+    - {{projectname}}
+    - tox
