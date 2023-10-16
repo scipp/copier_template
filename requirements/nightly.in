@@ -1,0 +1,6 @@
+# Add your dependencies here, should be same as in base.in, but use
+# versions from GitHub 'main' branch for upstream Scipp dependencies.
+# Example:
+#   sciline @ git+https://github.com/scipp/sciline@main
+-r test-base.in
+-r docs-base.in

@@ -8,6 +8,14 @@ setenv =
   JUPYTER_PLATFORM_DIRS = 1
 commands = pytest
 
+[testenv:nightly]
+deps = -r requirements/nightly.txt
+setenv =
+  JUPYTER_PLATFORM_DIRS = 1
+commands = pytest
+           python -m sphinx -j2 -v -b html -d {toxworkdir}/docs_doctrees docs html
+           python -m sphinx -j2 -v -b doctest -d {toxworkdir}/docs_doctrees docs html
+
 [testenv:docs]
 description = invoke sphinx-build to build the HTML docs
 deps = -r requirements/docs.txt
