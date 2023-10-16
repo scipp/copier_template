@@ -7,10 +7,9 @@ on:
   workflow_dispatch:
     inputs:
       os-variant:
-        default: '{{github_linux_image}}'
+        default: 'ubuntu-20.04'
         type: string
       python-version:
-        default: '{{min_python}}'
         type: string
       tox-env:
         default: 'test'
@@ -24,10 +23,9 @@ on:
   workflow_call:
     inputs:
       os-variant:
-        default: '{{github_linux_image}}'
+        default: 'ubuntu-20.04'
         type: string
       python-version:
-        default: '{{min_python}}'
         type: string
       tox-env:
         default: 'test'
@@ -38,7 +36,7 @@ on:
       coverage-report:
         default: false
         type: boolean
-{% raw %}
+
 jobs:
   test:
     runs-on: ${{ inputs.os-variant }}
@@ -56,4 +54,3 @@ jobs:
         with:
           name: CoverageReport
           path: coverage_html/
-{% endraw %}
