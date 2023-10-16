@@ -1,4 +1,3 @@
--r base.in
 -r ci.in
 -r docs.in
 -r mypy.in
