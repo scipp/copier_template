@@ -11,6 +11,10 @@ on:
   schedule:
     - cron: '0 0 * * *'
 
+defaults:
+  run:
+    shell: bash -l {0}  # required for conda env
+
 jobs:
   test:
     name: Test
