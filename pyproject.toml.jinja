@@ -25,8 +25,13 @@ classifiers = [
     "Typing :: Typed",
 ]
 requires-python = ">={{min_python}}"
+
+# IMPORTANT:
+# Make sure to also update requirements/base.in with the same dependencies.
+# This ensures that dependencies are pinned for CI.
 dependencies = [
 ]
+
 dynamic = ["version"]
 
 [project.urls]
