@@ -1,3 +1,4 @@
+import sys
 from argparse import ArgumentParser
 
 import tomli
@@ -24,9 +25,19 @@ with open("base.in", "w") as f:
     f.write(header)
     f.write("\n".join(dependencies))
 
+
+def as_nightly(name: str) -> str:
+    if name == "scipp":
+        version = f"cp{sys.version_info.major}{sys.version_info.minor}"
+        base = "https://github.com/scipp/scipp/releases/download/nightly/scipp-nightly"
+        suffix = "manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+        return "-".join([base, version, version, suffix])
+    return f"{name} @ git+https://github.com/scipp/{name}@main"
+
+
 nightly = args.nightly.split(",")
 dependencies = [dep for dep in dependencies if not dep.startswith(tuple(nightly))]
-dependencies += [f"{arg} @ git+https://github.com/scipp/{arg}@main" for arg in nightly]
+dependencies += [as_nightly(arg) for arg in nightly]
 
 with open("nightly.in", "w") as f:
     f.write(header)
