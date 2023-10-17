@@ -10,26 +10,9 @@ commands = pytest
 
 [testenv:nightly]
 deps =
-  # Add your dependencies here, should be same as in pyproject.toml, but use
-  # versions from GitHub 'main' branch for upstream Scipp dependencies.
-  # Example:
-  #   sciline @ git+https://github.com/scipp/sciline@main
+  -r requirements/nightly.txt
   pytest
-  autodoc_pydantic
-  ipykernel
-  ipython!=8.7.0  # Breaks syntax highlighting in Jupyter code cells.
-  myst-parser
-  nbsphinx
-  pydata-sphinx-theme>=0.13
-  sphinx
-  sphinx-autodoc-typehints==1.23.0  # Higher versions require sphinx-7, which is not supported by sphinx-design yet
-  sphinx-copybutton
-  sphinx-design
-setenv =
-  JUPYTER_PLATFORM_DIRS = 1
 commands = pytest
-           python -m sphinx -j2 -v -b html -d {toxworkdir}/docs_doctrees docs html
-           python -m sphinx -j2 -v -b doctest -d {toxworkdir}/docs_doctrees docs html
 
 [testenv:docs]
 description = invoke sphinx-build to build the HTML docs
@@ -73,4 +56,5 @@ description = Update dependencies by running pip-compile-multi
 deps = pip-compile-multi
 skip_install = true
 changedir = requirements
-commands = pip-compile-multi -d .
+commands = python ./make_base.py --nightly {{nightly_deps}}
+           pip-compile-multi -d .
