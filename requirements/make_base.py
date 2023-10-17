@@ -1,6 +1,6 @@
+import sys
 from argparse import ArgumentParser
 
-import sys
 import tomli
 
 parser = ArgumentParser()
@@ -28,7 +28,7 @@ with open("base.in", "w") as f:
 
 def as_nightly(name: str) -> str:
     if name == "scipp":
-        version = f"py{sys.version_info.major}{sys.version_info.minor}"
+        version = f"cp{sys.version_info.major}{sys.version_info.minor}"
         base = "https://github.com/scipp/scipp/releases/download/nightly/scipp-nightly"
         suffix = "manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
         return "-".join([base, version, version, suffix])
