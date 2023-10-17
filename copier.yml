@@ -5,6 +5,10 @@ orgname:
   default: scipp
   type: str
   help: What is your organization name?
+namespace_package:
+  default: ''
+  type: str
+  help: Use a namespace package with this name. If empty, no namespace package is used.
 description:
   type: str
   help: Brief description?
