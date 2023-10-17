@@ -9,7 +9,7 @@ Usage example:
 copier copy gh:scipp/copier_template myproject
 cd myproject
 git init .
-tox -e deps
+tox -e deps  # After adding dependencies to pyproject.toml
 git add * .copier-answers.yml .github .gitignore .pre-commit-config.yaml
 git commit -m "Setup from copier_template"
 tox -e docs

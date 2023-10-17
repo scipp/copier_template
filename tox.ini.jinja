@@ -8,6 +8,12 @@ setenv =
   JUPYTER_PLATFORM_DIRS = 1
 commands = pytest
 
+[testenv:nightly]
+deps =
+  -r requirements/nightly.txt
+  pytest
+commands = pytest
+
 [testenv:docs]
 description = invoke sphinx-build to build the HTML docs
 deps = -r requirements/docs.txt
@@ -50,4 +56,5 @@ description = Update dependencies by running pip-compile-multi
 deps = pip-compile-multi
 skip_install = true
 changedir = requirements
-commands = pip-compile-multi -d .
+commands = python ./make_base.py --nightly {{nightly_deps}}
+           pip-compile-multi -d .
