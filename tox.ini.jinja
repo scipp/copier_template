@@ -53,7 +53,9 @@ commands = python -m mypy .
 
 [testenv:deps]
 description = Update dependencies by running pip-compile-multi
-deps = pip-compile-multi
+deps =
+  pip-compile-multi
+  tomli
 skip_install = true
 changedir = requirements
 commands = python ./make_base.py --nightly {{nightly_deps}}
