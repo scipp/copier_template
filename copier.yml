@@ -22,9 +22,12 @@ year: 2023
 nightly_deps:
   type: str
   help: |
-    List of dependencies to install from Git during nightly builds,
+    List of dependencies to install from GitHub during nightly builds,
     separated by commas. Make sure to also list transitive dependencies,
-    otherwise their released versions will be used.
+    otherwise their released versions will be used. Specify either a
+    repository name or 'org/repo'. If no organization is given it defaults
+    to 'scipp'. In either case, the 'main' branch will be used. Example:
+        scipp,sciline,dask/dask
 related_projects:
   type: str
   help: |
