@@ -35,7 +35,7 @@ def as_nightly(name: str) -> str:
     return f"{name} @ git+https://github.com/scipp/{name}@main"
 
 
-nightly = args.nightly.split(",")
+nightly = args.nightly.split(",") if args.nightly else []
 dependencies = [dep for dep in dependencies if not dep.startswith(tuple(nightly))]
 dependencies += [as_nightly(arg) for arg in nightly]
 
