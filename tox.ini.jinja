@@ -58,5 +58,5 @@ deps =
   tomli
 skip_install = true
 changedir = requirements
-commands = python ./make_base.py --nightly {{nightly_deps}}
+commands = python ./make_base.py {% if nightly_deps %}--nightly {{nightly_deps}}{% endif %}
            pip-compile-multi -d .
