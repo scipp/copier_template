@@ -21,3 +21,9 @@ nightly_deps:
     List of dependencies to install from Git during nightly builds,
     separated by commas. Make sure to also list transitive dependencies,
     otherwise their released versions will be used.
+related_projects:
+  type: str
+  help: |
+    List of related projects, separated by commas.
+    This will be used to generate a list of links in the documentation.
+    For example, "Scipp,Sciline,Plopp".
