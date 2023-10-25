@@ -34,10 +34,10 @@ related_projects:
     List of related projects, separated by commas.
     This will be used to generate a list of links in the documentation.
     For example, "Scipp,Sciline,Plopp".
-  zenodo_doi_ref:
-    type: str
-    help: |
-      The ID of the Zenodo record to use for references.
-      This will be used to generate a DOI link in the documentation.
-      Go to https://zenodo.org/account/settings/github/ and enable your repository.
-      The ID (and DOI) will be available after the next release.
+zenodo_doi_ref:
+  type: str
+  help: |
+    The ID of the Zenodo record to use for references.
+    This will be used to generate a DOI link in the documentation.
+    Go to https://zenodo.org/account/settings/github/ and enable your repository.
+    The ID (and DOI) will be available after the next release.
