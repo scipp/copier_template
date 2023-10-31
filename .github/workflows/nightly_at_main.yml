@@ -6,7 +6,7 @@ name: Nightly test at main branch
 on:
   workflow_dispatch:
   schedule:
-    - cron: '30 23 * * *'
+    - cron: '30 1 * * 1-5'
 
 jobs:
   setup:
