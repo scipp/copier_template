@@ -14,6 +14,13 @@ deps =
   pytest
 commands = pytest
 
+[testenv:unpinned]
+description = Test with unpinned dependencies, as a user would install now.
+deps =
+  {{projectname}}
+  pytest
+commands = pytest
+
 [testenv:docs]
 description = invoke sphinx-build to build the HTML docs
 deps = -r requirements/docs.txt
