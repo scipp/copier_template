@@ -36,7 +36,7 @@ dynamic = ["version"]
 
 [project.urls]
 "Bug Tracker" = "https://github.com/{{orgname}}/{{projectname}}/issues"
-"Documentation" = "https://{{orgname}}.github.io/{{projectname}}"
+"Documentation" = "https://{{orgname}}.github.io{% if projectname != 'scipp' %}/{{projectname}}{% endif %}"
 "Source" = "https://github.com/{{orgname}}/{{projectname}}"
 
 [tool.setuptools_scm]
