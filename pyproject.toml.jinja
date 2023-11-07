@@ -41,9 +41,9 @@ dynamic = ["version"]
 
 [tool.setuptools_scm]
 {% if namespace_package -%}
-write_to = "src/{{namespace_package}}/{{projectname.removeprefix(namespace_package)}}/_version.py"
+version_file = "src/{{namespace_package}}/{{projectname.removeprefix(namespace_package)}}/_version.py"
 {% else %}
-write_to = "src/{{projectname}}/_version.py"
+version_file = "src/{{projectname}}/_version.py"
 {% endif %}
 
 [tool.pytest.ini_options]
