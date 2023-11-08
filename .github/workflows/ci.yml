@@ -14,7 +14,7 @@ jobs:
       DUMMYPROJECTPATH: './test-dummy'
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v3
+      - uses: actions/setup-python@v4
         with:
           python-version: '3.8'
       - run: pip install copier
@@ -28,7 +28,7 @@ jobs:
               -d min_python="3.8" \
               -d nightly_deps="" \
               -d related_projects=""
-      - run: git init
+      - run: git init  # ``setuptools`` complains if it is not a git repository.
         working-directory: ${{ env.DUMMYPROJECTPATH }}
       - run: sed -i '/dependencies = \[/a\    "numpy"' pyproject.toml
         working-directory: ${{ env.DUMMYPROJECTPATH }}
