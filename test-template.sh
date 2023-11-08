@@ -16,3 +16,4 @@ sed -i '/dependencies = \[/a\    "numpy"' pyproject.toml
 tox -e deps
 tox -e py38
 tox -e static
+tox -e docs
