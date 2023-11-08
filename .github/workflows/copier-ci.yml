@@ -10,9 +10,27 @@ jobs:
   tests:
     name: Tests
     runs-on: 'ubuntu-20.04'
+    env:
+      DUMMYPROJECTPATH: './test-dummy'
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v3
         with:
           python-version: '3.8'
-      - run: sh test-template.sh
+      - run: pip install copier
+      - run: pip install tox
+      - run: |
+            copier copy ./ ${DUMMYPROJECTPATH} \
+              -l \
+              -d description="Dummy project to test the template." \
+              -d projectname="testdummy" \
+              -d max_python="3.12" \
+              -d min_python="3.8" \
+              -d nightly_deps="" \
+              -d related_projects=""
+      - run: cd ${DUMMYPROJECTPATH}
+      - run: sed -i '/dependencies = \[/a\    "numpy"' pyproject.toml
+      - run: tox -e deps
+      - run: tox -e py38
+      - run: tox -e static
+      - run: tox -e docs

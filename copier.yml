@@ -1,6 +1,5 @@
 _exclude:
   - .github/workflows/copier-ci.yml
-  - test-template.sh
 
 projectname:
   type: str
