@@ -14,5 +14,5 @@ copier copy ./ ${DUMMYPROJECTPATH} \
 cd ${DUMMYPROJECTPATH}
 sed -i '/dependencies = \[/a\    "numpy"' pyproject.toml
 tox -e deps
-tox -e py39
+tox -e py38
 tox -e static
