@@ -28,6 +28,8 @@ jobs:
               -d min_python="3.8" \
               -d nightly_deps="" \
               -d related_projects=""
+      - run: git init
+        working-directory: ${{ env.DUMMYPROJECTPATH }}
       - run: sed -i '/dependencies = \[/a\    "numpy"' pyproject.toml
         working-directory: ${{ env.DUMMYPROJECTPATH }}
       - run: tox -e deps
