@@ -28,9 +28,13 @@ jobs:
               -d min_python="3.8" \
               -d nightly_deps="" \
               -d related_projects=""
-      - run: cd ${DUMMYPROJECTPATH}
       - run: sed -i '/dependencies = \[/a\    "numpy"' pyproject.toml
+        working-directory: ${DUMMYPROJECTPATH}
       - run: tox -e deps
+        working-directory: ${DUMMYPROJECTPATH}
       - run: tox -e py38
+        working-directory: ${DUMMYPROJECTPATH}
       - run: tox -e static
+        working-directory: ${DUMMYPROJECTPATH}
       - run: tox -e docs
+        working-directory: ${DUMMYPROJECTPATH}
