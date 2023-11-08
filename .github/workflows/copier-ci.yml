@@ -1,0 +1,23 @@
+# SPDX-License-Identifier: BSD-3-Clause
+# Copyright (c) 2023 Scipp contributors (https://github.com/scipp)
+
+name: CopierCI
+
+on:
+  pull_request:
+
+jobs:
+  tests:
+    name: Tests
+    strategy:
+      matrix:
+        os: ['ubuntu-20.04']
+        python:
+          - version: '3.8'
+            tox-env: 'py38'
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+        with:
+          python-version: '3.8'
+      - run: sh test-template.sh
