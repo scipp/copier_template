@@ -3,12 +3,6 @@ html
 .tox
 src/{{projectname}}.egg-info
 
-{% if namespace_package -%}
-src/{{namespace_package}}/{{projectname.removeprefix(namespace_package)}}/_version.py
-{% else %}
-src/{{projectname}}/_version.py
-{% endif %}
-
 *.sw?
 
 .clangd/
