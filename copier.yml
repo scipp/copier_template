@@ -1,3 +1,6 @@
+_exclude:
+  - .github/workflows/copier-ci.yml
+
 projectname:
   type: str
   help: What is your project name?
