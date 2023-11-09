@@ -1,5 +1,4 @@
-_exclude:
-  - .github/workflows/copier-ci.yml
+_subdirectory: template
 
 projectname:
   type: str
