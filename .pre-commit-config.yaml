@@ -1,1 +1,28 @@
-template/.pre-commit-config.yaml
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-json
+        exclude: asv.conf.json
+      - id: check-toml
+      - id: check-yaml
+        exclude: conda/meta.yaml
+      - id: detect-private-key
+      - id: trailing-whitespace
+        args: [ --markdown-linebreak-ext=md ]
+        exclude: '\.svg'
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.2.6
+    hooks:
+      - id: codespell
+  - repo: https://github.com/pre-commit/pygrep-hooks
+    rev: v1.10.0
+    hooks:
+      - id: python-no-eval
+      - id: python-no-log-warn
+      - id: python-use-type-annotations
+      - id: rst-backticks
+      - id: rst-directive-colons
+      - id: rst-inline-touching-normal
+      - id: text-unicode-replacement-char
