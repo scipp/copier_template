@@ -1,0 +1,45 @@
+# SPDX-License-Identifier: BSD-3-Clause
+# Copyright (c) 2023 Scipp contributors (https://github.com/scipp)
+
+name: CopierCI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  tests:
+    name: Tests
+    runs-on: 'ubuntu-20.04'
+    env:
+      DUMMYPROJECTPATH: './test-dummy'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+      - run: pip install copier
+      - run: pip install tox
+      - run: |
+            copier copy ./ ${DUMMYPROJECTPATH} \
+              -l \
+              -d description="Dummy project to test the template." \
+              -d projectname="testdummy" \
+              -d max_python="3.12" \
+              -d min_python="3.8" \
+              -d nightly_deps="" \
+              -d related_projects=""
+      - run: git init  # ``setuptools`` complains if it is not a git repository.
+        working-directory: ${{ env.DUMMYPROJECTPATH }}
+      - run: sed -i '/dependencies = \[/a\    "numpy"' pyproject.toml
+        working-directory: ${{ env.DUMMYPROJECTPATH }}
+      - run: tox -e deps
+        working-directory: ${{ env.DUMMYPROJECTPATH }}
+      - run: tox -e py38
+        working-directory: ${{ env.DUMMYPROJECTPATH }}
+      - run: tox -e static
+        working-directory: ${{ env.DUMMYPROJECTPATH }}
+      - run: tox -e docs
+        working-directory: ${{ env.DUMMYPROJECTPATH }}
