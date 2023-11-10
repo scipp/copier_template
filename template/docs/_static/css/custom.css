@@ -1,0 +1,17 @@
+.search-button-field {
+    border: none;
+    border-radius: 0;
+    background: inherit;
+    color: inherit;
+}
+
+.search-button-field:hover {
+    border: none;
+    color: var(--pst-color-primary);
+    box-shadow: 0 max(3px,.1875rem,.12em) 0 var(--pst-color-link-hover);
+}
+
+.search-button-field > span {
+    display: none;
+    visibility: hidden;
+}
