@@ -7,7 +7,7 @@
 
 .search-button-field:hover {
     border: none;
-    color: var(--pst-color-primary);
+    color: var(--pst-color-link-hover);
     box-shadow: 0 max(3px,.1875rem,.12em) 0 var(--pst-color-link-hover);
 }
 
