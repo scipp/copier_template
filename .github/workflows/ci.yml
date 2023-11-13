@@ -12,7 +12,7 @@ on:
 jobs:
   formatting:
     name: Formatting and static analysis
-    runs-on: 'ubuntu-20.04'
+    runs-on: 'ubuntu-22.04'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
@@ -27,7 +27,7 @@ jobs:
   tests:
     name: Tests
     needs: formatting
-    runs-on: 'ubuntu-20.04'
+    runs-on: 'ubuntu-22.04'
     env:
       DUMMYPROJECTPATH: './test-dummy'
     steps:
