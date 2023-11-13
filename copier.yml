@@ -4,7 +4,7 @@ projectname:
   type: str
   help: What is your project name?
 prettyname:
-  default: ''
+  default: '{{projectname|capitalize}}'
   type: str
   help: What is your project name in title case?
 orgname:

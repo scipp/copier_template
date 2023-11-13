@@ -9,7 +9,7 @@ import {{projectname}}
 sys.path.insert(0, os.path.abspath('.'))
 
 # General information about the project.
-project = u'{% if prettyname %}{{prettyname}}{% else %}{{projectname|capitalize}}{% endif %}'
+project = u'{{prettyname}}'
 copyright = u'{{year}} Scipp contributors'
 author = u'Scipp contributors'
 
@@ -164,7 +164,7 @@ html_sidebars = {
     "**": ["sidebar-nav-bs", "page-toc"],
 }
 
-html_title = "{% if prettyname %}{{prettyname}}{% else %}{{projectname|capitalize}}{% endif %}"
+html_title = "{{prettyname}}"
 html_logo = "_static/logo.svg"
 html_favicon = "_static/favicon.ico"
 
