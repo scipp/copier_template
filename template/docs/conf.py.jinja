@@ -164,7 +164,7 @@ html_sidebars = {
     "**": ["sidebar-nav-bs", "page-toc"],
 }
 
-html_title = "{{projectname}}"
+html_title = "{% if prettyname %}{{prettyname}}{% else %}{{projectname|capitalize}}{% endif %}"
 html_logo = "_static/logo.svg"
 html_favicon = "_static/favicon.ico"
 
