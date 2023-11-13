@@ -9,7 +9,7 @@ import {{projectname}}
 sys.path.insert(0, os.path.abspath('.'))
 
 # General information about the project.
-project = u'{{projectname}}'
+project = u'{% if prettyname %}{{prettyname}}{% else %}{{projectname|capitalize}}{% endif %}'
 copyright = u'{{year}} Scipp contributors'
 author = u'Scipp contributors'
 

@@ -3,6 +3,10 @@ _subdirectory: template
 projectname:
   type: str
   help: What is your project name?
+prettyname:
+  default: ''
+  type: str
+  help: What is your project name in title case?
 orgname:
   default: scipp
   type: str
