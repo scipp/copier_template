@@ -6,7 +6,7 @@ See [copier](https://copier.readthedocs.io/en/stable/) for details.
 Usage example:
 
 ```sh
-copier copy gh:scipp/copier_template myproject
+copier copy gh:scipp/copier_template myproject  # requires python>=3.9
 cd myproject
 git init .
 tox -e deps  # After adding dependencies to pyproject.toml
