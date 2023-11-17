@@ -1,13 +1,14 @@
+# Build artifacts
+build
 dist
 html
 .tox
-src/{{projectname}}.egg-info
+*.egg-info
 
 *.sw?
 
+# Caches
 .clangd/
-.idea/
-.vscode/
 *.ipynb_checkpoints
 __pycache__/
 .vs/
@@ -16,3 +17,20 @@ __pycache__/
 .pytest_cache
 .mypy_cache
 docs/generated/
+
+# Editor settings
+.idea/
+.vscode/
+
+# Data files
+*.data
+*.dat
+*.csv
+*.xye
+*.h5
+*.hdf5
+*.hdf
+*.nxs
+*.raw
+*.cif
+*.rcif
