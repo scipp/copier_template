@@ -3,7 +3,7 @@
 ## Classes
 
 ```{eval-rst}
-.. currentmodule:: {{projectname}}
+.. currentmodule:: {% if namespace_package %}{{ namespace_package }}.{{ projectname.removeprefix(namespace_package) }}{% else %}{{ projectname }}{% endif %}
 
 .. autosummary::
    :toctree: ../generated/classes
