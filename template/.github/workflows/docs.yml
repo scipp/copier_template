@@ -66,4 +66,3 @@ jobs:
           branch: gh-pages
           folder: html
           single-commit: true
-          ssh-key: ${{ secrets.GH_PAGES_DEPLOY_KEY }}
