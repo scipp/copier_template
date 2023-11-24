@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: BSD-3-Clause
+# Copyright (c) 2023 Scipp contributors (https://github.com/scipp)
+
 import sys
 from argparse import ArgumentParser
 from pathlib import Path
@@ -30,15 +33,6 @@ def write_dependencies(dependency_name: str, dependencies: List[str]) -> None:
             custom = ""
     else:
         custom = ""
-
-    temporary_dependencies = [
-        # temporary until virtualenv has release with support for this
-        "platformdirs<4",
-        # Temporary until questionary (dep of copier) updates
-        # See https://github.com/tmbo/questionary/blob/2df265534f3eb77aafcf70902e53e80beb1793e0/pyproject.toml#L36C43-L36C110 # noqa: E501
-        "prompt-toolkit==3.0.36",
-    ]
-    dependencies = dependencies + temporary_dependencies
 
     with path.open("w") as f:
         f.write(custom)
