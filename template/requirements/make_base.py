@@ -33,7 +33,6 @@ def write_dependencies(dependency_name: str, dependencies: List[str]) -> None:
             custom = ""
     else:
         custom = ""
-
     with path.open("w") as f:
         f.write(custom)
         f.write(CUSTOM_AUTO_SEPARATOR)
