@@ -15,7 +15,7 @@ requirements:
 
 test:
   imports:
-    - {{projectname}}
+    - {% if namespace_package %}{{namespace_package}}.{% endif %}{{ projectname.removeprefix(namespace_package) }}
   requires:
     - pytest
   source_files:
