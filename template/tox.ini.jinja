@@ -15,6 +15,7 @@ commands = pytest
 [testenv:unpinned]
 description = Test with unpinned dependencies, as a user would install now.
 deps =
+  -r requirements/basetest.txt
   {{projectname}}
   pytest
 commands = pytest
