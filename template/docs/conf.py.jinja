@@ -73,6 +73,31 @@ napoleon_type_aliases = {
 typehints_defaults = 'comma'
 typehints_use_rtype = False
 
+_typehint_aliases = {
+            'scipp._scipp.core.DataArray': 'scipp.DataArray',
+            'scipp._scipp.core.DataGroup': 'scipp.DataGroup',
+            'scipp._scipp.core.Dataset': 'scipp.Dataset',
+            'scipp._scipp.core.Variable': 'scipp.Variable',
+        }
+
+
+def typehints_formatter(annotation, config: sphinx.config.Config) -> Optional[str]:
+    """Format typehints with improved NewType handling."""
+    _  = config
+    # TODO Switch to isinstance(key, NewType) once our minimum is Python 3.10
+    # Note that we cannot pass mypy in Python<3.10 since NewType is not a type.
+    if (supertype := getattr(annotation, '__supertype__', None)) is not None:
+        projectname = '{% if namespace_package %}{{namespace_package}}.{% endif %}{{ projectname.removeprefix(namespace_package) }}'
+
+        if !annotation.__module__.startswith(projectname):
+            return None
+        super_target = f'{supertype.__module__}.{supertype.__name__}'
+        super_label = _typehint_aliases.get(super_target, super_target)
+        return f':class:`{annotation.__module__.removeprefix(projectname+".")}.{annotation.__name__} <{annotation.__module__}.{annotation.__name__}>` [:class:`{super_label} <{super_target}>`]'  # noqa: E501
+
+    return None
+
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
