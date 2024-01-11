@@ -89,7 +89,7 @@ def typehints_formatter(annotation, config: sphinx.config.Config) -> Optional[st
     if (supertype := getattr(annotation, '__supertype__', None)) is not None:
         projectname = '{% if namespace_package %}{{namespace_package}}.{% endif %}{{ projectname.removeprefix(namespace_package) }}'
 
-        if !annotation.__module__.startswith(projectname):
+        if not annotation.__module__.startswith(projectname):
             return None
         if supertype.__module__ == 'builtins':
             super_target = supertype.__name__
