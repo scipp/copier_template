@@ -91,7 +91,10 @@ def typehints_formatter(annotation, config: sphinx.config.Config) -> Optional[st
 
         if !annotation.__module__.startswith(projectname):
             return None
-        super_target = f'{supertype.__module__}.{supertype.__name__}'
+        if supertype.__module__ == 'builtins':
+            super_target = supertype.__name__
+        else:
+            super_target = f'{supertype.__module__}.{supertype.__name__}'
         super_label = _typehint_aliases.get(super_target, super_target)
         return f':class:`{annotation.__module__.removeprefix(projectname+".")}.{annotation.__name__} <{annotation.__module__}.{annotation.__name__}>` [:class:`{super_label} <{super_target}>`]'  # noqa: E501
 
