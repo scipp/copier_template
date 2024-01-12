@@ -8,6 +8,8 @@ import sys
 
 sys.path.insert(0, os.path.abspath('.'))
 
+from _typehints import typehints_formatter_for  # noqa: E402
+
 # General information about the project.
 project = u'{{prettyname}}'
 copyright = u'{{year}} Scipp contributors'
@@ -73,36 +75,7 @@ napoleon_type_aliases = {
 }
 typehints_defaults = 'comma'
 typehints_use_rtype = False
-
-_typehint_aliases = {
-    'scipp._scipp.core.DataArray': 'scipp.DataArray',
-    'scipp._scipp.core.Dataset': 'scipp.Dataset',
-    'scipp._scipp.core.DType': 'scipp.DType',
-    'scipp._scipp.core.Unit': 'scipp.Unit',
-    'scipp._scipp.core.Variable': 'scipp.Variable',
-    'scipp.core.data_group.DataGroup': 'scipp.DataGroup',
-}
-
-
-def typehints_formatter(annotation, config: sphinx.config.Config) -> Optional[str]:
-    """Format typehints with improved NewType handling."""
-    _ = config
-    # TODO Switch to isinstance(key, NewType) once our minimum is Python 3.10
-    # Note that we cannot pass mypy in Python<3.10 since NewType is not a type.
-    if (supertype := getattr(annotation, '__supertype__', None)) is not None:
-        projectname = '{% if namespace_package %}{{namespace_package}}.{% endif %}{{ projectname.removeprefix(namespace_package) }}'
-
-        if not annotation.__module__.startswith(projectname):
-            return None
-        if supertype.__module__ == 'builtins':
-            super_target = supertype.__name__
-        else:
-            super_target = f'{supertype.__module__}.{supertype.__name__}'
-        super_label = _typehint_aliases.get(super_target, super_target)
-        return f':class:`{annotation.__module__.removeprefix(projectname+".")}.{annotation.__name__} <{annotation.__module__}.{annotation.__name__}>` [:class:`{super_label} <{super_target}>`]'  # noqa: E501
-
-    return None
-
+typehints_formatter = typehints_formatter_for('{% if namespace_package %}{{namespace_package}}.{% endif %}{{ projectname.removeprefix(namespace_package) }}')
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -165,7 +138,7 @@ html_theme_options = {
     "external_links": [
         {% for link in related_projects.replace(' ', '').split(',')|sort -%}
             {"name": "{{ link }}", "url": "https://scipp.github.io{% if link == 'Scipp' %}{% else %}/{{ link|lower }}{% endif %}"},
-        {% endfor %}],
+    {% endfor %}],
     "icon_links": [
         {
             "name": "GitHub",
