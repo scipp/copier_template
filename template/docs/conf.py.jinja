@@ -75,16 +75,18 @@ typehints_defaults = 'comma'
 typehints_use_rtype = False
 
 _typehint_aliases = {
-            'scipp._scipp.core.DataArray': 'scipp.DataArray',
-            'scipp._scipp.core.DataGroup': 'scipp.DataGroup',
-            'scipp._scipp.core.Dataset': 'scipp.Dataset',
-            'scipp._scipp.core.Variable': 'scipp.Variable',
-        }
+    'scipp._scipp.core.DataArray': 'scipp.DataArray',
+    'scipp._scipp.core.Dataset': 'scipp.Dataset',
+    'scipp._scipp.core.DType': 'scipp.DType',
+    'scipp._scipp.core.Unit': 'scipp.Unit',
+    'scipp._scipp.core.Variable': 'scipp.Variable',
+    'scipp.core.data_group.DataGroup': 'scipp.DataGroup',
+}
 
 
 def typehints_formatter(annotation, config: sphinx.config.Config) -> Optional[str]:
     """Format typehints with improved NewType handling."""
-    _  = config
+    _ = config
     # TODO Switch to isinstance(key, NewType) once our minimum is Python 3.10
     # Note that we cannot pass mypy in Python<3.10 since NewType is not a type.
     if (supertype := getattr(annotation, '__supertype__', None)) is not None:
