@@ -8,8 +8,6 @@ import sys
 
 sys.path.insert(0, os.path.abspath('.'))
 
-from _typehints import typehints_formatter_for  # noqa: E402
-
 # General information about the project.
 project = u'{{prettyname}}'
 copyright = u'{{year}} Scipp contributors'
@@ -31,6 +29,11 @@ extensions = [
     'nbsphinx',
     'myst_parser',
 ]
+try:
+    import sciline.sphinxext.domain_types
+    extensions.append('sciline.sphinxext.domain_types')
+except ModuleNotFoundError:
+    pass
 
 myst_enable_extensions = [
     "amsmath",
@@ -75,7 +78,8 @@ napoleon_type_aliases = {
 }
 typehints_defaults = 'comma'
 typehints_use_rtype = False
-typehints_formatter = typehints_formatter_for('{% if namespace_package %}{{namespace_package}}.{% endif %}{{ projectname.removeprefix(namespace_package) }}')
+
+sciline_domain_types_prefix = '{% if namespace_package %}{{namespace_package}}.{% endif %}{{ projectname.removeprefix(namespace_package) }}'
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
