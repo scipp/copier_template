@@ -80,6 +80,14 @@ typehints_defaults = 'comma'
 typehints_use_rtype = False
 
 sciline_domain_types_prefix = '{% if namespace_package %}{{namespace_package}}.{% endif %}{{ projectname.removeprefix(namespace_package) }}'
+sciline_domain_types_aliases = {
+    'scipp._scipp.core.DataArray': 'scipp.DataArray',
+    'scipp._scipp.core.Dataset': 'scipp.Dataset',
+    'scipp._scipp.core.DType': 'scipp.DType',
+    'scipp._scipp.core.Unit': 'scipp.Unit',
+    'scipp._scipp.core.Variable': 'scipp.Variable',
+    'scipp.core.data_group.DataGroup': 'scipp.DataGroup',
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
