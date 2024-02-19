@@ -11,6 +11,10 @@ orgname:
   default: scipp
   type: str
   help: What is your organization name?
+is_ess_technique_repo:
+  default: True
+  type: bool
+  help: Is this a technique repository at ESS?
 namespace_package:
   default: ''
   type: str

@@ -1,0 +1,89 @@
+name: High-level requirement
+description: Describe a high-level requirement
+title: "[Requirement] "
+labels: ["requirement"]
+projects: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to provide as many details as possible for this requirement!
+  - type: input
+    id: summary
+    attributes:
+      label: Executive summary
+      description: Provide a short summary of the requirement
+      placeholder: "Example: We need to correct for X when processing Y."
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context and background knowledge
+      description: |
+        - What is the context of this requirement?
+        - What background knowledge is required to understand it?
+        - Does this depend on previous tasks? Provide links!
+        - Is there follow-up work?
+      placeholder: "Example: See summary on Wikipedia, or the following paper."
+    validations:
+      required: true
+  - type: textarea
+    id: inputs
+    attributes:
+      label: Inputs
+      description: |
+        Describe in detail all the input data and data properties that are known.
+        This is not about test data (see below), but about general properties of data that will be used in practice.
+      placeholder: "Example: A single 1-D spectrum with a known wavelength range."
+    validations:
+      required: true
+  - type: textarea
+    id: methodology
+    attributes:
+      label: Methodology
+      description: |
+        Describe, e.g., the computation to be performed.
+        When linking to references, please refer to the specific section, page, or equation.
+      placeholder: "Remember you can write equations such as $n\\lambda = 2d\\sin(\\theta)$ using LaTeX syntax, as well as other Markdown formatting."
+    validations:
+      required: true
+  - type: textarea
+    id: outputs
+    attributes:
+      label: Outputs
+      description: |
+        Describe in detail all the output data and data properties.
+        This is not about test data (see below), but about general properties of data that will be used in practice.
+      placeholder: "Example: The position of the peak in the spectrum."
+    validations:
+      required: true
+  - type: dropdown
+    id: interfaces
+    attributes:
+      label: Which interfaces are required?
+      multiple: true
+      options:
+        - Integrated into reduction workflow
+        - Python module / function
+        - Python script
+        - Jupyter notebook
+        - Other (please describe in comments)
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: testcases
+    attributes:
+      label: Test cases
+      description: How can we test this requirement? Links to tests data and reference data, or other suggestions.
+    validations:
+      required: true
+  - type: textarea
+    id: comments
+    attributes:
+      label: Comments
+      description: Do you have other comments that do not fall in the above categories?
+      placeholder: "Example: Depends on issues #1234, blocked by #666."
+    validations:
+      required: false
