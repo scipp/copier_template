@@ -149,9 +149,10 @@ html_theme_options = {
         "image_dark": "_static/logo-dark.svg",
     },
     "external_links": [
-        {% for link in related_projects.replace(' ', '').split(',')|sort -%}
-            {"name": "{{ link }}", "url": "https://scipp.github.io{% if link == 'Scipp' %}{% else %}/{{ link|lower }}{% endif %}"},
-    {% endfor %}],
+{% for link in related_projects.replace(' ', '').split(',')|sort -%}
+        {"name": "{{ link }}", "url": "https://scipp.github.io{% if link == 'Scipp' %}{% else %}/{{ link|lower }}{% endif %}"},
+{% endfor %}
+    ],
     "icon_links": [
         {
             "name": "GitHub",
