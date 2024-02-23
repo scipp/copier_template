@@ -9,7 +9,7 @@ updates:
       # if you use those, you don't need updates.
       - dependency-name: "actions/*"
   - package-ecosystem: "github-actions"
-    directory: "/template"
+    directory: "/template/.github/workflows"  # Should specify full path if it's not '/'.
     schedule:
       interval: "weekly"
     ignore:
