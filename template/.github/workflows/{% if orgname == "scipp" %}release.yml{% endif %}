@@ -42,7 +42,7 @@ jobs:
         with:
           fetch-depth: 0  # history required so setuptools_scm can determine version
 
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
           python-version-file: '.github/workflows/python-version-ci'
 
