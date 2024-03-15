@@ -28,7 +28,7 @@ jobs:
             boa
       - run: conda mambabuild --channel conda-forge --channel scipp --no-anaconda-upload --override-channels --output-folder conda/package conda
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: conda-package-noarch
           path: conda/package/noarch/*.tar.bz2
@@ -42,7 +42,7 @@ jobs:
         with:
           fetch-depth: 0  # history required so setuptools_scm can determine version
 
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         with:
           python-version-file: '.github/workflows/python-version-ci'
 
@@ -53,7 +53,7 @@ jobs:
         run: python -m build
 
       - name: Upload wheels
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dist
           path: dist
