@@ -60,8 +60,10 @@ commands = python -m mypy .
 description = Update dependencies by running pip-compile-multi
 deps =
   pip-compile-multi
+  pyyaml
   tomli
 skip_install = true
 changedir = requirements
 commands = python ./make_base.py{% if nightly_deps %} --nightly {{nightly_deps}}{% endif %}
            pip-compile-multi -d . --backtracking
+           python ../conda/make_conda_meta.py

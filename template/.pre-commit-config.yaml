@@ -8,7 +8,7 @@ repos:
       - id: check-merge-conflict
       - id: check-toml
       - id: check-yaml
-        exclude: conda/meta.yaml
+        exclude: 'conda/meta(_template)?.yaml'
       - id: detect-private-key
       - id: trailing-whitespace
         args: [ --markdown-linebreak-ext=md ]
