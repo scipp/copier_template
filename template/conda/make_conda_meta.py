@@ -83,7 +83,7 @@ def main() -> None:
     meta['about'] = {
         'home': project['urls']['Source'],
         'dev_url': project['urls']['Source'],
-        'docs_url': project['urls']['Documentation'],
+        'doc_url': project['urls']['Documentation'],
         'summary': project['description'],
         'description': project['description'],
         'license': identify_license(),
