@@ -26,13 +26,32 @@ classifiers = [
 ]
 requires-python = ">={{min_python}}"
 
+dynamic = ["version"]
+
 # IMPORTANT:
 # Run 'tox -e deps' after making changes here. This will update requirement files.
 # Make sure to list one dependency per line.
 dependencies = [
 ]
 
-dynamic = ["version"]
+# Map from pip package names to conda package names
+# when the two are different.
+# Used for both package dependencies and test dependencies.
+# Must include optional dependency spec and all extra requirements
+# must be listed under `tool.conda_meta.extra_dependencies.run`
+# or `tool.conda_meta.extra_dependencies.test`
+# E.g.
+#  graphviz = "python-graphviz"
+#  "scipp[all]" = "scipp"
+[tool.conda_meta.dependency_map]
+
+# List any dependencies needed by the conda package
+# but not by the wheel or regular project tests.
+[tool.conda_meta.extra_dependencies]
+run = [
+]
+test = [
+]
 
 [project.urls]
 "Bug Tracker" = "https://github.com/{{orgname}}/{{projectname}}/issues"

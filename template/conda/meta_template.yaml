@@ -1,8 +1,8 @@
 package:
-  name: {{projectname}}
 {% raw %}
   version: {{ GIT_DESCRIBE_TAG }}
 {% endraw %}
+
 source:
   path: ..
 
@@ -10,14 +10,10 @@ requirements:
   build:
     - setuptools
     - setuptools_scm
-  run:
-    - python>={{min_python}}
 
 test:
   imports:
     - {% if namespace_package %}{{namespace_package}}.{% endif %}{{ projectname.removeprefix(namespace_package) }}
-  requires:
-    - pytest
   source_files:
     - pyproject.toml
     - tests/
@@ -29,11 +25,3 @@ build:
   noarch: python
   script:
     - python -m pip install .
-
-about:
-  home: https://github.com/{{orgname}}/{{projectname}}
-  license: BSD-3-Clause
-  summary: {{description}}
-  description: {{description}}
-  dev_url: https://github.com/{{orgname}}/{{projectname}}
-  doc_url: https://{{orgname}}.github.io/{{projectname}}
