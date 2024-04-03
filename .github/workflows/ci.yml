@@ -52,6 +52,8 @@ jobs:
         working-directory: ${{ env.DUMMYPROJECTPATH }}
       - run: tox -e py39
         working-directory: ${{ env.DUMMYPROJECTPATH }}
+      # We normally run pre-commit via the pre-commit action.
+      # But that doesn't work here because we want to run it in a different directory.
       - run: tox -e static
         working-directory: ${{ env.DUMMYPROJECTPATH }}
       - run: tox -e docs
