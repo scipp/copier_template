@@ -6,12 +6,22 @@ package:
 source:
   path: ..
 
+{% raw %}
+{% set pyproject = load_file_data('pyproject.toml') %}
+{% set dependencies = pyproject.get('project', {}).get('dependencies', {}) %}
+{% endraw %}
+
 requirements:
   build:
     - setuptools
     - setuptools_scm
   run:
     - python>={{min_python}}
+{% raw %}
+  {% for package in dependencies %}
+    - {% if package == "graphviz" %}python-graphviz{% else %}{{ package }}{% endif %}
+  {% endfor %}
+{% endraw %}
 
 test:
   imports:
