@@ -19,7 +19,6 @@ jobs:
           - 'scipp/essreduce'
           - 'scipp/beamlime'
           - 'scipp/essspectroscopy'
-          - 'scipp/chexus'
           - 'scipp/ess'
           - 'scipp/chexus'
           - 'scipp/essreflectometry'
