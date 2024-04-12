@@ -1,0 +1,51 @@
+name: Update
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update:
+    strategy:
+      matrix:
+        project:
+          - 'scipp/esssans'
+          - 'scipp/sciline'
+          - 'scipp/scippnexus'
+          - 'scipp/scippneutron'
+          - 'scipp/plopp'
+          - 'scipp/essnmx'
+          - 'scipp/essreduce'
+          - 'scipp/beamlime'
+          - 'scipp/essspectroscopy'
+          - 'scipp/chexus'
+          - 'scipp/ess'
+          - 'scipp/chexus'
+          - 'scipp/essreflectometry'
+          - 'scipp/essdiffraction'
+          - 'scipp/esspolarization'
+          - 'scipp/scippuncertainty'
+          - 'scipp/essimaging'
+  
+    name: Update downstream projects
+    runs-on: 'ubuntu-latest'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT }}
+          repository: ${{ matrix.project }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.X'
+      - run: pip install copier
+      - run: copier update --skip-answered --vcs-ref=HEAD --conflict=rej
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.PAT }}
+          author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          title: Sync ${{ matrix.project }} with copier template
+          body: |
+            This PR updates the project to the latest version of scipp's [copier-template](https://github.com/scipp/copier_template).
+            Remember to check for any conflicts and resolve them.
