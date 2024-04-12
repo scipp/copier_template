@@ -27,7 +27,7 @@ jobs:
           - 'scipp/esspolarization'
           - 'scipp/scippuncertainty'
           - 'scipp/essimaging'
-  
+
     name: Update downstream projects
     runs-on: 'ubuntu-latest'
     steps:
