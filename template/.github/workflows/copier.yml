@@ -23,3 +23,6 @@ jobs:
           body: |
             This PR updates the project to the latest version of scipp's [copier-template](https://github.com/scipp/copier_template).
             Remember to check for any conflicts and resolve them.
+            GitHub prevents [workflow triggered pull requests from starting new workflow](https://docs.github.com/en/actions/security-guides/automatic-token-authentication#using-the-github_token-in-a-workflow)
+            so this pull request needs to be closed and reopened to trigger the CI.
+            
