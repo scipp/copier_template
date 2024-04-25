@@ -83,6 +83,8 @@ pydocstyle.convention = "numpy"
 ]
 "*.ipynb" = [
     "E501",  # longer lines are sometimes more readable
+    "F403",  # *-imports used with domain types
+    "F405",  # linter may fail to find names because of *-imports
     "I",  # we don't collect imports at the top
     "S101",  # asserts are used for demonstration and are safe in notebooks
     "T201",  # printing is ok for demonstration purposes
