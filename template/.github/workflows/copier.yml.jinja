@@ -23,7 +23,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{ secrets.SCIPP_BOT_PAT }}
+          token: {{ '${{ secrets.SCIPP_BOT_PAT }}' }}
           push-to-fork: scipp-bot/{{projectname}}
           title: '[CRON] Sync with copier template'
           body: |
