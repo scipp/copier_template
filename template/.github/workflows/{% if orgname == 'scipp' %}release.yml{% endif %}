@@ -8,6 +8,10 @@ on:
 defaults:
   run:
     shell: bash -l {0}  # required for conda env
+  env:
+    ESS_PROTECTED_FILESTORE_USERNAME: ${{ secrets.ESS_PROTECTED_FILESTORE_USERNAME }}
+    ESS_PROTECTED_FILESTORE_PASSWORD: ${{ secrets.ESS_PROTECTED_FILESTORE_PASSWORD }}
+
 
 jobs:
   build_conda:
