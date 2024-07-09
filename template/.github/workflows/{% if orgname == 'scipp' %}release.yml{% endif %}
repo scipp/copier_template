@@ -8,6 +8,11 @@ on:
 defaults:
   run:
     shell: bash -l {0}  # required for conda env
+  env:
+    # Security note! The secrets are only added to workflows that run on trusted branches (main). If secrets are accessible in workflows that run on untrusted branches they can be extracted, see https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#exfiltrating-data-from-a-runner.
+    ESS_PROTECTED_FILESTORE_USERNAME: ${{ secrets.ESS_PROTECTED_FILESTORE_USERNAME }}
+    ESS_PROTECTED_FILESTORE_PASSWORD: ${{ secrets.ESS_PROTECTED_FILESTORE_PASSWORD }}
+
 
 jobs:
   build_conda:
