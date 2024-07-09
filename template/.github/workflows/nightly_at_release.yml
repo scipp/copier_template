@@ -26,6 +26,9 @@ jobs:
   tests:
     name: Tests
     needs: setup
+    env:
+        ESS_PROTECTED_FILESTORE_USERNAME: ${{ secrets.ESS_PROTECTED_FILESTORE_USERNAME }}
+        ESS_PROTECTED_FILESTORE_PASSWORD: ${{ secrets.ESS_PROTECTED_FILESTORE_PASSWORD }}
     strategy:
       matrix:
         os: ['ubuntu-22.04']
