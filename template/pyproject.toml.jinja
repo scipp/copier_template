@@ -71,7 +71,7 @@ ignore = [
     "COM812", "COM819", "D206", "D300", "E111", "E114", "E117", "ISC001", "ISC002", "Q000", "Q001", "Q002", "Q003", "W191",
 ]
 fixable = ["I001", "B010"]
-isort.known-first-party = ["{{projectname}}"]
+isort.known-first-party = ["{% if namespace_package %}{{namespace_package}}.{% endif %}{{ projectname.removeprefix(namespace_package) }}"]
 pydocstyle.convention = "numpy"
 
 [tool.ruff.lint.per-file-ignores]
