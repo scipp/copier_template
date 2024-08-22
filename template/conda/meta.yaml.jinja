@@ -29,6 +29,7 @@ test:
     - {% if namespace_package %}{{namespace_package}}.{% endif %}{{ projectname.removeprefix(namespace_package) }}
   requires:
     - pytest
+    - pooch
   source_files:
     - pyproject.toml
     - tests/
