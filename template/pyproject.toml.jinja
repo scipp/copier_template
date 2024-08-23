@@ -34,6 +34,11 @@ dependencies = [
 
 dynamic = ["version"]
 
+[project.optional-dependencies]
+test = [
+    "pytest",
+]
+
 [project.urls]
 "Bug Tracker" = "https://github.com/{{orgname}}/{{projectname}}/issues"
 "Documentation" = "https://{{orgname}}.github.io{% if projectname != 'scipp' %}/{{projectname}}{% endif %}"
