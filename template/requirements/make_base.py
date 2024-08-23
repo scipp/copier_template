@@ -42,8 +42,12 @@ with open("../pyproject.toml", "rb") as toml_file:
     if dependencies is None:
         raise RuntimeError("No dependencies found in pyproject.toml")
     dependencies = [dep.strip().strip('"') for dep in dependencies]
+    test_dependencies = pyproject["project"].get("optional-dependencies", {}).get("test", [])
+    test_dependencies = [dep.strip().strip('"') for dep in test_dependencies]
+
 
 write_dependencies("base", dependencies)
+write_dependencies("basetest", test_dependencies)
 
 
 def as_nightly(repo: str) -> str:
