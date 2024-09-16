@@ -167,7 +167,7 @@ html_theme_options = {
     },
     "external_links": [
 {% for link in related_projects.replace(' ', '').split(',')|sort -%}
-{% raw %}        {% endraw %}{"name": "{{ link }}", "url": "https://{{orgname}}.github.ioz{% if link == 'Scipp' %}{% else %}/{{ link|lower }}{% endif %}"},
+{% raw %}        {% endraw %}{"name": "{{ link }}", "url": "https://{{orgname}}.github.io{% if link == 'Scipp' %}{% else %}/{{ link|lower }}{% endif %}"},
 {% endfor %}    ],
     "icon_links": [
         {
