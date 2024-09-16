@@ -2,6 +2,9 @@ build
 dist
 .tox
 
+venv
+.venv
+
 *.sw?
 compile_commands.json
 
