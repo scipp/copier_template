@@ -41,7 +41,7 @@ env:
 jobs:
   docs:
     name: Build documentation
-    runs-on: 'ubuntu-22.04'
+    runs-on: 'ubuntu-24.04'
     env:
         ESS_PROTECTED_FILESTORE_USERNAME: ${{ secrets.ESS_PROTECTED_FILESTORE_USERNAME }}
         ESS_PROTECTED_FILESTORE_PASSWORD: ${{ secrets.ESS_PROTECTED_FILESTORE_PASSWORD }}
