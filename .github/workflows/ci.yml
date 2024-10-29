@@ -35,14 +35,15 @@ jobs:
         with:
           python-version: '3.10'
       - run: pip install -r requirements/ci.txt
-      - run: copier copy ./ ${DUMMYPROJECTPATH} \
-               -l \
-               -d description="Dummy project to test the template." \
-               -d projectname="testdummy" \
-               -d max_python="3.12" \
-               -d min_python="3.10" \
-               -d nightly_deps="" \
-               -d related_projects="ScippNeutron"  # Just to test the list.
+      - run: |
+            copier copy ./ "${DUMMYPROJECTPATH}" \
+              -l \
+              -d description="Dummy project to test the template." \
+              -d projectname="testdummy" \
+              -d max_python="3.12" \
+              -d min_python="3.10" \
+              -d nightly_deps="" \
+              -d related_projects="ScippNeutron"  # Just to test the list.
       - run: git init  # ``setuptools`` complains if it is not a git repository.
         working-directory: ${{ env.DUMMYPROJECTPATH }}
       - run: sed -i '/dependencies = \[/a\    "numpy"' pyproject.toml
