@@ -19,8 +19,8 @@ jobs:
       - name: Get Python version for other CI jobs
         id: vars
         run: |
-          echo "min_python=$(cat .github/workflows/python-version-ci)" >> $GITHUB_OUTPUT
-          echo "min_tox_env=py$(cat .github/workflows/python-version-ci | sed 's/\.//g')" >> $GITHUB_OUTPUT
+          echo "min_python=$(< .github/workflows/python-version-ci)" >> "$GITHUB_OUTPUT"
+          echo "min_tox_env=py$(sed 's/\.//g' < .github/workflows/python-version-ci)" >> "$GITHUB_OUTPUT"
       - uses: actions/setup-python@v5
         with:
           python-version-file: '.github/workflows/python-version-ci'
@@ -53,6 +53,6 @@ jobs:
     uses: ./.github/workflows/docs.yml
     with:
       publish: false
-      linkcheck: ${{ contains(matrix.variant.os, 'ubuntu') && github.ref == 'refs/heads/main' }}
+      linkcheck: github.ref == 'refs/heads/main' }}
       branch: ${{ github.head_ref == '' && github.ref_name || github.head_ref }}
     secrets: inherit
