@@ -34,3 +34,5 @@ repos:
     rev: v1.7.3
     hooks:
       - id: actionlint
+        # Disable because of false-positive SC2046
+        args: ["-shellcheck="]
