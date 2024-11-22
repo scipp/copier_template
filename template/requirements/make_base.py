@@ -58,11 +58,12 @@ def as_nightly(repo: str) -> str:
     else:
         org = "scipp"
     if repo == "scipp":
-        version = f"cp{sys.version_info.major}{sys.version_info.minor}"
-        base = "https://github.com/scipp/scipp/releases/download/nightly/scipp-nightly"
-        suffix = "manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
-        prefix = "scipp @ "
-        return prefix + "-".join([base, version, version, suffix])
+        return (
+            "scipp\n"
+            "--index-url=https://pypi.anaconda.org/scipp-nightly-wheels/simple/\n"
+            "--extra-index-url=https://pypi.org/simple\n"
+            "--pre"
+        )
     return f"{repo} @ git+https://github.com/{org}/{repo}@main"
 
 
