@@ -42,8 +42,14 @@ with open("../pyproject.toml", "rb") as toml_file:
     if dependencies is None:
         raise RuntimeError("No dependencies found in pyproject.toml")
     dependencies = [dep.strip().strip('"') for dep in dependencies]
+    test_dependencies = (
+        pyproject["project"].get("optional-dependencies", {}).get("test", [])
+    )
+    test_dependencies = [dep.strip().strip('"') for dep in test_dependencies]
+
 
 write_dependencies("base", dependencies)
+write_dependencies("basetest", test_dependencies)
 
 
 def as_nightly(repo: str) -> str:
@@ -55,12 +61,13 @@ def as_nightly(repo: str) -> str:
         version = f"cp{sys.version_info.major}{sys.version_info.minor}"
         base = "https://github.com/scipp/scipp/releases/download/nightly/scipp-nightly"
         suffix = "manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
-        return "-".join([base, version, version, suffix])
+        prefix = "scipp @ "
+        return prefix + "-".join([base, version, version, suffix])
     return f"{repo} @ git+https://github.com/{org}/{repo}@main"
 
 
 nightly = tuple(args.nightly.split(",") if args.nightly else [])
-nightly_dependencies = [dep for dep in dependencies if not dep.startswith(nightly)]
+nightly_dependencies = [dep for dep in dependencies + test_dependencies if not dep.startswith(nightly)]
 nightly_dependencies += [as_nightly(arg) for arg in nightly]
 
 write_dependencies("nightly", nightly_dependencies)

@@ -1,7 +1,20 @@
 # SPDX-License-Identifier: BSD-3-Clause
 # Copyright (c) {{year}} {{orgname|capitalize}} contributors (https://github.com/{{orgname}})
+
+"""Tests of package integrity.
+
+Note that additional imports need to be added for repositories that
+contain multiple packages.
+"""
+
 {% if namespace_package %}from {{namespace_package}} {% endif %}import {{ projectname.removeprefix(namespace_package) }} as pkg
 
 
 def test_has_version():
     assert hasattr(pkg, '__version__')
+
+
+# This is for CI package tests. They need to run tests with minimal dependencies,
+# that is, without installing pytest. This code does not affect pytest.
+if __name__ == '__main__':
+    test_has_version()

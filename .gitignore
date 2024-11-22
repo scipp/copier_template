@@ -2,6 +2,10 @@ build
 dist
 .tox
 
+venv
+.venv
+uv.lock  # we lock dependencies with pip-compile, not uv
+
 *.sw?
 compile_commands.json
 

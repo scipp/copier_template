@@ -1,8 +1,10 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v5.0.0
     hooks:
       - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-illegal-windows-names
       - id: check-json
         exclude: asv.conf.json
       - id: check-merge-conflict
@@ -14,9 +16,10 @@ repos:
         args: [ --markdown-linebreak-ext=md ]
         exclude: '\.svg'
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.2.6
+    rev: v2.3.0
     hooks:
       - id: codespell
+        args: [--ignore-words=.codespell-ignore]
   - repo: https://github.com/pre-commit/pygrep-hooks
     rev: v1.10.0
     hooks:
@@ -27,3 +30,9 @@ repos:
       - id: rst-directive-colons
       - id: rst-inline-touching-normal
       - id: text-unicode-replacement-char
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.7.3
+    hooks:
+      - id: actionlint
+        # Disable because of false-positive SC2046
+        args: ["-shellcheck="]

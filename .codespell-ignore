@@ -1,0 +1,4 @@
+# Codespell wants "socioeconomic" which seems to be the standard spelling.
+# But we use the word in our code of conduct which is the contributor covenant.
+# Let's not modify it if we don't have to.
+socio-economic

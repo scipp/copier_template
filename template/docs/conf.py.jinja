@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: BSD-3-Clause
+# Copyright (c) {{year}} {{orgname|capitalize}} contributors (https://github.com/{{orgname}})
+
 import doctest
 import os
 import sys
@@ -164,9 +167,8 @@ html_theme_options = {
     },
     "external_links": [
 {% for link in related_projects.replace(' ', '').split(',')|sort -%}
-        {"name": "{{ link }}", "url": "https://{{orgname}}.github.io{% if link == 'Scipp' %}{% else %}/{{ link|lower }}{% endif %}"},
-{% endfor %}
-    ],
+{% raw %}        {% endraw %}{"name": "{{ link }}", "url": "https://{{orgname}}.github.io{% if link == 'Scipp' %}{% else %}/{{ link|lower }}{% endif %}"},
+{% endfor %}    ],
     "icon_links": [
         {
             "name": "GitHub",
