@@ -81,7 +81,6 @@ pydocstyle.convention = "numpy"
 
 [tool.ruff.lint.per-file-ignores]
 # those files have an increased risk of relying on import order
-"__init__.py" = ["I"]
 "tests/*" = [
     "S101",  # asserts are fine in tests
     "B018",  # 'useless expressions' are ok because some tests just check for exceptions
