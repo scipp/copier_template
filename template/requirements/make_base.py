@@ -1,4 +1,3 @@
-import sys
 from argparse import ArgumentParser
 from pathlib import Path
 
@@ -58,6 +57,9 @@ def as_nightly(repo: str) -> str:
     else:
         org = "scipp"
     if repo == "scipp":
+        # With the standard pip resolver index-url takes precedence over
+        # extra-index-url but with uv it's reversed, so if we move to tox-uv
+        # this needs to be reversed.
         return (
             "scipp\n"
             "--index-url=https://pypi.anaconda.org/scipp-nightly-wheels/simple/\n"
