@@ -24,7 +24,7 @@ min_python:
 max_python:
   type: str
   help: Maximum Python version that is known to work?
-year: 2024
+year: 2025
 nightly_deps:
   type: str
   help: |
