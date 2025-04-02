@@ -10,7 +10,7 @@ copier copy gh:scipp/copier_template myproject  # requires python>=3.9
 cd myproject
 git init .
 tox -e deps  # After adding dependencies to pyproject.toml
-git add * .copier-answers.yml .github .gitignore .pre-commit-config.yaml
+git add * .copier-answers.yml .github .gitignore .pre-commit-config.yaml .python-version
 git commit -m "Setup from copier_template"
 tox -e docs
 pip install -e .
