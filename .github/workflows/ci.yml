@@ -48,7 +48,7 @@ jobs:
         working-directory: ${{ env.DUMMYPROJECTPATH }}
       - run: sed -i '/dependencies = \[/a\    "numpy"' pyproject.toml
         working-directory: ${{ env.DUMMYPROJECTPATH }}
-      - run: sed -i '/html_logo = "_static\/logo.svg"/d; /html_favicon = "_static\/favicon.ico"/d' docs/conf.py
+      - run: sed -i '/html_logo = "_static\/logo.svg"/d; /html_favicon = "_static\/favicon.ico"/d; /"logo": {/,/},/d' docs/conf.py
         working-directory: ${{ env.DUMMYPROJECTPATH }}
       - run: tox -e deps
         working-directory: ${{ env.DUMMYPROJECTPATH }}
