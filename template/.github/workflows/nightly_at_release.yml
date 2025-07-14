@@ -39,3 +39,27 @@ jobs:
       tox-env: ${{ matrix.python.tox-env }}
       checkout_ref: ${{ needs.setup.outputs.release_tag }}
     secrets: inherit
+
+  tests-at-lower-bound:
+    name: Tests at lower bound
+    needs: setup
+    strategy:
+      matrix:
+        os: ['ubuntu-24.04']
+        python:
+          - version: '${{needs.setup.outputs.min_python}}'
+            tox-env: 'nightly'
+    runs-on: ${{ matrix.os }}
+    env:
+        ESS_PROTECTED_FILESTORE_USERNAME: ${{ secrets.ESS_PROTECTED_FILESTORE_USERNAME }}
+        ESS_PROTECTED_FILESTORE_PASSWORD: ${{ secrets.ESS_PROTECTED_FILESTORE_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.setup.outputs.release_tag }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python.version }}
+      - run: python -m pip install --upgrade uv pytest
+      - run: uv pip install . --resolution=lowest-direct --force-reinstall
+      - run: python -m pytest
