@@ -47,8 +47,6 @@ jobs:
         ESS_PROTECTED_FILESTORE_PASSWORD: ${{ secrets.ESS_PROTECTED_FILESTORE_PASSWORD }}
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ needs.setup.outputs.release_tag }}
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python.version }}
