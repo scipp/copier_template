@@ -50,6 +50,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python.version }}
-      - run: python -m pip install --upgrade uv pytest
+      - run: python -m pip install --upgrade uv
       - run: uv pip install .[test] --resolution=lowest-direct --force-reinstall
       - run: python -m pytest
