@@ -50,9 +50,10 @@ jobs:
         working-directory: ${{ env.DUMMYPROJECTPATH }}
       # Create empty files so the build doesn't generate warnings
       - run: |
-          touch template/docs/_static/favicon.ico
-          touch template/docs/_static/logo-dark.svg
-          touch template/docs/_static/logo.svg
+          mkdir -p docs/_static
+          touch docs/_static/favicon.ico
+          touch docs/_static/logo-dark.svg
+          touch docs/_static/logo.svg
         working-directory: ${{ env.DUMMYPROJECTPATH }}
       - run: tox -e deps
         working-directory: ${{ env.DUMMYPROJECTPATH }}
