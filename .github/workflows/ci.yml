@@ -26,7 +26,7 @@ jobs:
   tests:
     name: Tests
     needs: formatting
-    runs-on: 'ubuntu-22.04'
+    runs-on: 'ubuntu-24.04'
     env:
       DUMMYPROJECTPATH: './test-dummy'
     steps:
@@ -47,6 +47,12 @@ jobs:
       - run: git init  # ``setuptools`` complains if it is not a git repository.
         working-directory: ${{ env.DUMMYPROJECTPATH }}
       - run: sed -i '/dependencies = \[/a\    "numpy"' pyproject.toml
+        working-directory: ${{ env.DUMMYPROJECTPATH }}
+      # Create empty files so the build doesn't generate warnings
+      - run: |
+          touch docs/_static/favicon.ico
+          touch docs/_static/logo-dark.svg
+          touch docs/_static/logo.svg
         working-directory: ${{ env.DUMMYPROJECTPATH }}
       - run: tox -e deps
         working-directory: ${{ env.DUMMYPROJECTPATH }}
