@@ -48,9 +48,11 @@ jobs:
         working-directory: ${{ env.DUMMYPROJECTPATH }}
       - run: sed -i '/dependencies = \[/a\    "numpy"' pyproject.toml
         working-directory: ${{ env.DUMMYPROJECTPATH }}
-      # Remove all configuration regarding logos while testing with dummy project as we don't have logos in the template.
+      # Create empty files so the build doesn't generate warnings
       - run: |
-          sed -i '/html_logo = "_static\/logo.svg"/d; /html_favicon = "_static\/favicon.ico"/d; /"logo": {/,/},/d' docs/conf.py
+          touch template/docs/_static/favicon.ico
+          touch template/docs/_static/logo-dark.svg
+          touch template/docs/_static/logo.svg
         working-directory: ${{ env.DUMMYPROJECTPATH }}
       - run: tox -e deps
         working-directory: ${{ env.DUMMYPROJECTPATH }}
