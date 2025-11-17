@@ -22,3 +22,4 @@ CMakeSettings.json
 .pytest_cache
 .mypy_cache
 docs/generated/
+*.DS_Store
