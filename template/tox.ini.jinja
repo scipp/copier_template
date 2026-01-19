@@ -42,7 +42,7 @@ commands = {[testenv:docs]commands}
 [testenv:linkcheck]
 description = Run Sphinx linkcheck
 deps = -r requirements/docs.txt
-commands = python -m sphinx -j2 -v -b linkcheck -d {toxworkdir}/docs_doctrees docs html
+commands = python -m sphinx -j2 -v -b linkcheck -d {toxworkdir}/docs_doctrees -D nbsphinx_execute=never docs html
 
 [testenv:static]
 description = Code formatting and static analysis
